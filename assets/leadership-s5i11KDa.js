@@ -1,4 +1,4 @@
-import{i as n,r as o,g as e,b as s,o as l,c as i,$ as c,L as d,e as g,d as p}from"./core-zeo4OYE9.js";/* empty css              */n("leadership");const m={salim:992,sahal:935,mohammed:943,mubarak:887};function u(){const r=p();c("#leadRow").innerHTML=d.map((a,t)=>`
+import{i as n,r as o,g as e,b as s,o as l,c as i,$ as c,L as d,e as g,d as p}from"./core-1P_EoWaE.js";/* empty css              */n("leadership");const m={salim:992,sahal:935,mohammed:943,mubarak:887};function u(){const r=p();c("#leadRow").innerHTML=d.map((a,t)=>`
     <li class="lead-card">
       <span class="lead-name"><span>${a.name[r]}</span></span>
       <span class="lead-photo-wrap"><img src="/img/team/${a.img}.webp" alt="${a.name[r]}" width="640" height="${m[a.img]}" ${t<2?'fetchpriority="high"':'loading="lazy"'} decoding="async" /></span>
