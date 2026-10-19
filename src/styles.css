@@ -360,3 +360,9 @@ ul, ol { list-style: none; }
 [dir='rtl'] .team-name { text-transform: none; font-weight: 700; }
 .team-cta { margin-top: clamp(24px, 4vw, 44px); text-align: center; }
 @media (max-width: 760px) { .team-row { grid-template-columns: repeat(2, 1fr); row-gap: 28px; } }
+
+/* ============ FOOTER SOCIAL ============ */
+.foot-social { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.foot-social > span { font: 700 12px var(--font-body); letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6; }
+.social-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cream); font-weight: 700; padding: 9px 16px; border: 2px solid rgba(255, 243, 234, 0.35); border-radius: 999px; transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.3s var(--ease); }
+.social-link:hover { background: var(--orange); border-color: var(--orange); color: var(--cream); transform: translateY(-2px) rotate(-1deg); }

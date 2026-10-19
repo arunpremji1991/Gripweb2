@@ -13,7 +13,7 @@ import './styles.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { I18N, ORDER_URL, BRANCHES } from './data.js';
+import { I18N, ORDER_URL, BRANCHES, SOCIAL } from './data.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,6 +91,13 @@ function chromeHtml() {
             <span class="logo-mask foot-logo" role="img" aria-label="GRIP"></span>
             <p>${t('foot.tag')}</p>
             <a class="btn btn-sm js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
+            <div class="foot-social">
+              <span>${t('foot.follow')}</span>
+              <a class="social-link" href="${SOCIAL.instagram.url}" target="_blank" rel="noopener noreferrer" aria-label="${t('a11y.instagram')}">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                <span dir="ltr">${SOCIAL.instagram.handle}</span>
+              </a>
+            </div>
           </div>
           <nav class="foot-col" aria-label="Footer">
             <h3>${t('foot.nav')}</h3>

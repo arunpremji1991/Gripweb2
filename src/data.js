@@ -4,7 +4,7 @@
  * NOT YET SUPPLIED — do not invent; replace when available:
  *   - Branch street addresses
  *   - Opening hours (per branch)
- *   - Social media URLs (Instagram, TikTok, etc.)
+ *   - Other social media URLs (TikTok, etc.)
  *   - WhatsApp number
  *   - Production domain (needed for canonical URL / og:image absolute URL)
  *   - Branch-specific ordering URLs (one shared ordering page for now)
@@ -13,6 +13,10 @@
 export const ORDER_URL = {
   en: 'https://menu.apetitomenu.com/GRIP/en',
   ar: 'https://menu.apetitomenu.com/GRIP/ar',
+};
+
+export const SOCIAL = {
+  instagram: { url: 'https://www.instagram.com/grip.om/', handle: '@grip.om' },
 };
 
 export const BRANCHES = [
@@ -270,6 +274,8 @@ export const I18N = {
     'foot.rights': '© 2026 GRIP Restaurant. All Rights Reserved.',
     'foot.nav': 'Explore',
     'foot.branches': 'Branches',
+    'foot.follow': 'Follow us',
+    'a11y.instagram': 'GRIP on Instagram',
     'a11y.menu': 'Menu',
     'a11y.lang': 'العربية',
     'a11y.home': 'GRIP — home',
@@ -366,6 +372,8 @@ export const I18N = {
     'foot.rights': '© 2026 مطعم جريب. جميع الحقوق محفوظة.',
     'foot.nav': 'استكشف',
     'foot.branches': 'الفروع',
+    'foot.follow': 'تابعنا',
+    'a11y.instagram': 'جريب على إنستغرام',
     'a11y.menu': 'القائمة',
     'a11y.lang': 'English',
     'a11y.home': 'جريب — الرئيسية',
