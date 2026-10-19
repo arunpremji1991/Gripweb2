@@ -38,40 +38,12 @@
     }
   ]
   </script>
-  <script type="module" crossorigin src="/assets/index-DaCcXNIj.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BP0cvATe.css">
+  <script type="module" crossorigin src="/assets/main-DIEZcHOB.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/core-zeo4OYE9.js">
+  <link rel="stylesheet" crossorigin href="/assets/core-wQtpNAex.css">
 </head>
 <body>
-  <a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
-
-  <!-- ============ HEADER ============ -->
-  <header class="nav" id="nav">
-    <a class="nav-logo" href="#top" aria-label="GRIP — home" data-i18n-aria="a11y.home">
-      <span class="logo-mask" role="img" aria-label="GRIP"></span>
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#story" data-i18n="nav.story">Our Story</a>
-      <a href="#smash" data-i18n="nav.smash">The Smash</a>
-      <a href="#menu" data-i18n="nav.menu">Menu</a>
-      <a href="#locations" data-i18n="nav.locations">Locations</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="lang" type="button" id="langBtn" data-i18n="a11y.lang">العربية</button>
-      <a class="btn btn-sm js-order" target="_blank" rel="noopener" data-i18n="cta.order">Order now</a>
-      <button class="burger" type="button" id="burgerBtn" aria-expanded="false" aria-controls="drawer" aria-label="Menu" data-i18n-aria="a11y.menu"><span></span><span></span></button>
-    </div>
-  </header>
-
-  <div class="drawer" id="drawer" hidden>
-    <nav aria-label="Mobile">
-      <a href="#story" data-i18n="nav.story">Our Story</a>
-      <a href="#smash" data-i18n="nav.smash">The Smash</a>
-      <a href="#menu" data-i18n="nav.menu">Menu</a>
-      <a href="#locations" data-i18n="nav.locations">Locations</a>
-      <a class="btn btn-cream js-order" target="_blank" rel="noopener" data-i18n="cta.order">Order now</a>
-    </nav>
-    <img class="drawer-chef" src="/brand/character-chef-flex.png" alt="" width="780" height="543" />
-  </div>
+  <div id="site-header"></div>
 
   <main id="main">
     <!-- ============ HERO: SCROLL-DRIVEN BURGER ASSEMBLY ============ -->
@@ -173,6 +145,18 @@
       <img class="waves" src="/brand/pattern-waves-cream.png" alt="" aria-hidden="true" width="1484" height="415" loading="lazy" />
     </section>
 
+    <!-- ============ LEADERSHIP TEASER ============ -->
+    <section class="team-teaser" id="team">
+      <div class="wrap">
+        <div class="team-head" data-reveal>
+          <p class="kicker" data-i18n="lead.teaser.k">Our leadership</p>
+          <h2 class="h2" data-i18n="lead.teaser.t">Four Omani founders. One shared vision.</h2>
+        </div>
+        <ul class="team-row" id="teamRow"></ul>
+        <div class="team-cta" data-reveal><a class="btn btn-cream" href="/leadership/" data-i18n="cta.meetTeam">Meet the founders</a></div>
+      </div>
+    </section>
+
     <!-- ============ MENU ============ -->
     <section class="menu" id="menu">
       <div class="wrap">
@@ -182,7 +166,10 @@
             <h2 class="h2" data-i18n="menu.title">Pick your grip.</h2>
             <p class="body menu-note" data-i18n="menu.note"></p>
           </div>
-          <a class="btn js-order" target="_blank" rel="noopener" data-i18n="cta.orderOnline">Order online</a>
+          <div class="menu-head-cta">
+            <a class="btn" href="/menu/" data-i18n="cta.fullMenu">See the full menu</a>
+            <a class="btn btn-ghost-o js-order" target="_blank" rel="noopener" data-i18n="cta.orderOnline">Order online</a>
+          </div>
         </div>
         <div class="tabs" role="tablist" id="menuTabs"></div>
         <ul class="menu-list" id="menuList" role="tabpanel"></ul>
@@ -223,27 +210,6 @@
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="foot">
-    <img class="foot-chef" src="/brand/character-chef-curled.png" alt="" width="732" height="559" loading="lazy" />
-    <div class="wrap foot-inner">
-      <div class="foot-brand">
-        <span class="logo-mask foot-logo" role="img" aria-label="GRIP"></span>
-        <p data-i18n="foot.tag">An Omani brand born in Dhofar.</p>
-        <a class="btn btn-sm js-order" target="_blank" rel="noopener" data-i18n="cta.order">Order now</a>
-      </div>
-      <nav class="foot-col" aria-label="Footer">
-        <h3 data-i18n="foot.nav">Explore</h3>
-        <a href="#story" data-i18n="nav.story">Our Story</a>
-        <a href="#smash" data-i18n="nav.smash">The Smash</a>
-        <a href="#menu" data-i18n="nav.menu">Menu</a>
-        <a href="#locations" data-i18n="nav.locations">Locations</a>
-      </nav>
-      <div class="foot-col" id="footBranches">
-        <h3 data-i18n="foot.branches">Branches</h3>
-      </div>
-    </div>
-    <p class="foot-rights" data-i18n="foot.rights">© 2026 GRIP Restaurant. All Rights Reserved.</p>
-  </footer>
+  <div id="site-footer"></div>
 </body>
 </html>
