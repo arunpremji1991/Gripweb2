@@ -33,6 +33,7 @@ function renderBranches() {
       <img class="branch-chef wob" src="/brand/character-chef-${i % 2 ? 'burger-box' : 'curled'}.png" alt="" width="735" height="745" loading="lazy" />
       <h3>${b.name}</h3>
       <p class="branch-city">${t('loc.city')}</p>
+      <p class="branch-addr" dir="ltr">${b.address}</p>
       <a class="branch-tel" href="tel:${b.tel}" dir="ltr">${b.phone}</a>
       <div class="branch-cta">
         <a class="btn btn-cream" href="${b.maps}" target="_blank" rel="noopener">${t('cta.directions')}</a>

@@ -1,5 +1,6 @@
 import '../pages.css';
-import { $, $$, gsap, ScrollTrigger, reduce, onLang, applyLang, initCore, revealAll } from '../core.js';
+import { $, $$, gsap, ScrollTrigger, reduce, t, getLang, onLang, applyLang, initCore, revealAll } from '../core.js';
+import { BRANCHES, REVIEWS } from '../data.js';
 
 initCore('story');
 
@@ -48,5 +49,39 @@ if (!reduce) {
   gsap.from('.order-art', { rotation: -8, scale: 0.9, ease: 'none', scrollTrigger: { trigger: '.order', start: 'top bottom', end: 'center center', scrub: true } });
 }
 
-onLang(() => revealAll());
+const stars = (n) => `<span class="stars" role="img" aria-label="${n} / 5">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span>`;
+
+function renderReviews() {
+  const lang = getLang();
+  $('#ratingRow').innerHTML = BRANCHES.map((b) => `
+    <li class="rating-card" data-reveal>
+      <span class="rating-score" dir="ltr">${b.rating.score}<small>★</small></span>
+      <div class="rating-meta">
+        <h3>${b.name}</h3>
+        <p class="rating-count"><strong dir="ltr">${b.rating.count}</strong> ${t('rev.reviews')} · ${t('rev.outof')}</p>
+        <a class="btn btn-sm" href="${b.googleUrl}" target="_blank" rel="noopener">${t('rev.read')}</a>
+      </div>
+    </li>`).join('');
+  const quotes = REVIEWS.filter((r) => r.text?.[lang] || r.text?.en);
+  $('#quoteRow').innerHTML = quotes.map((r) => {
+    const b = BRANCHES.find((x) => x.id === r.branch);
+    return `
+    <li class="quote-card" data-reveal>
+      ${stars(r.stars || 5)}
+      <blockquote>${r.text[lang] || r.text.en}</blockquote>
+      <p class="quote-by"><strong>${r.name}</strong>${b ? ` · ${b.name}` : ''} · Google</p>
+    </li>`;
+  }).join('');
+  $('#quoteRow').hidden = !quotes.length;
+  revealAll();
+}
+
+if (!reduce) {
+  gsap.from('.gal', { y: 70, autoAlpha: 0, scale: 0.94, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.gal-grid', start: 'top 80%', once: true } });
+  $$('.gal img').forEach((img, i) => {
+    gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+}
+
+onLang(() => { revealAll(); renderReviews(); });
 applyLang();

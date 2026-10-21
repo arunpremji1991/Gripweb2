@@ -26,6 +26,10 @@ export const BRANCHES = [
     phone: '+968 7112 2000',
     tel: '+96871122000',
     maps: 'https://www.google.com/maps/search/?api=1&query=Grip+-+Wafa+Walk,+Salalah',
+    address: '25JF+364, Al Sultan Taymoor St, Salalah',
+    // Google rating snapshot (Google Maps listing, Oct 2026) — update when it changes
+    rating: { score: '4.5', count: 388 },
+    googleUrl: 'https://www.google.com/maps/place/Grip+-+Wafa+Walk,+Salalah/data=!4m7!3m6!1s0x3dd3dd004554f2cd:0x969319f87a9ae6e!8m2!3d17.0305978!4d54.1736651!16s%2Fg%2F11ycwkln3q',
   },
   {
     id: 'gardens-mall',
@@ -33,8 +37,19 @@ export const BRANCHES = [
     phone: '+968 7222 3377',
     tel: '+96872223377',
     maps: 'https://www.google.com/maps/search/?api=1&query=Grip+-+Salalah+Gardens+Mall',
+    address: 'Ground Floor, Salalah Gardens Mall, Ar Rubat St, Salalah',
+    rating: { score: '4.9', count: 106 },
+    googleUrl: 'https://www.google.com/maps/place/Grip+-+Salalah+Gardens+Mall/@17.0225497,54.0668007,17z/data=!3m1!4b1!4m6!3m5!1s0x3dd16100248390f3:0xc386c536940737d1!8m2!3d17.0225497!4d54.0668007!16s%2Fg%2F11zwzgfzxh',
   },
 ];
+
+/*
+ * Guest quotes to feature on the Our Story page.
+ * Add only reviews the business has chosen to publish (copy the exact text from the
+ * Google Business Profile). Shape: { name: 'First name', branch: 'wafa-walk' | 'gardens-mall',
+ * stars: 5, text: { en: '...', ar: '...' } }
+ */
+export const REVIEWS = [];
 
 /* ---------- Ingredient glossary: key -> [English, Arabic] ---------- */
 const G = {
@@ -206,6 +221,14 @@ export const I18N = {
     'page.story.s3': 'Sultanate of Oman',
     'page.story.s4': 'Regional & international expansion',
     'page.story.cta': 'Taste the story.',
+    'page.story.gal.k': 'A look inside',
+    'page.story.gal.t': 'Inside GRIP.',
+    'rev.k': 'What guests say',
+    'rev.t': 'Rated by our guests.',
+    'rev.sub': 'Public ratings from the Google listing of each branch.',
+    'rev.reviews': 'Google reviews',
+    'rev.read': 'Read reviews on Google',
+    'rev.outof': 'out of 5',
     'title.home': 'GRIP Smashburger | Omani Smash Burger in Salalah, Dhofar',
     'title.menu': 'Menu | GRIP Smashburger',
     'title.leadership': 'Leadership | GRIP Smashburger',
@@ -326,6 +349,14 @@ export const I18N = {
     'page.story.s3': 'سلطنة عُمان',
     'page.story.s4': 'التوسع الإقليمي والدولي',
     'page.story.cta': 'تذوق القصة.',
+    'page.story.gal.k': 'نظرة من الداخل',
+    'page.story.gal.t': 'داخل جريب.',
+    'rev.k': 'ماذا يقول ضيوفنا',
+    'rev.t': 'تقييمات ضيوفنا.',
+    'rev.sub': 'التقييمات المعلنة على صفحة Google لكل فرع.',
+    'rev.reviews': 'تقييم على Google',
+    'rev.read': 'اقرأ التقييمات على Google',
+    'rev.outof': 'من 5',
     'title.home': 'جريب سماش برجر | برجر سماش عُماني في صلالة، ظفار',
     'title.menu': 'القائمة | جريب سماش برجر',
     'title.leadership': 'قيادتنا | جريب سماش برجر',

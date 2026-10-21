@@ -408,3 +408,4 @@ ul, ol { list-style: none; }
 
 /* decorative stickers may bleed past a section edge; never create sideways scroll */
 main { overflow-x: clip; }
+.branch-addr { margin-top: 8px; font-size: 15px; opacity: 0.92; max-width: 34ch; }
