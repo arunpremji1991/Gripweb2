@@ -113,3 +113,4 @@ if (!reduce) {
 
 onLang(() => { render(); spy(); renderMarquee(); });
 applyLang();
+if (location.hash) setTimeout(() => { const el = document.querySelector(location.hash); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 120, behavior: 'auto' }); }, 900);

@@ -1,38 +1,30 @@
 import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, onLang, applyLang, initCore, revealAll, renderMarquee } from './core.js';
-import { MENU, BRANCHES, LEADERS, ORDER_URL } from './data.js';
+import './pages.css';
+import { MENU, BRANCHES, LEADERS, ORDER_URL, productImg } from './data.js';
 import { initAssembly } from './burger.js';
 
 initCore('home');
 let lang = getLang();
 // hero pin must be created before any other ScrollTrigger so later triggers account for its spacing
 const assembly = initAssembly({ getLang });
-let menuCat = MENU[0].id;
 
-/* ---------------- menu ---------------- */
+/* ---------------- signature menu rail (full menu lives on /menu/) ---------------- */
+const SIGNATURE = ['Old School', 'Mushroom Swiss', 'Truffle', 'Grip', 'Brisket Burger'];
 function renderMenu() {
-  const tabs = $('#menuTabs');
-  tabs.innerHTML = MENU.map((c) => `<button type="button" role="tab" id="tab-${c.id}" aria-selected="${c.id === menuCat}" aria-controls="menuList" data-cat="${c.id}">${c.label[lang]}</button>`).join('');
-  const cat = MENU.find((c) => c.id === menuCat);
-  const list = $('#menuList');
-  list.setAttribute('aria-labelledby', `tab-${cat.id}`);
-  list.innerHTML = cat.items.map((it) => `
-    <li class="item">
-      <div class="item-top">
-        <h3>${it.name}${cat.id === 'new' ? `<em>${t('menu.new')}</em>` : ''}</h3>
-        <span class="item-price"><small>OMR</small> ${it.price}</span>
-      </div>
-      ${it.ing ? `<p>${it.ing[lang]}</p>` : ''}
+  const all = MENU.flatMap((c) => c.items.map((i) => ({ ...i, cat: c.id })));
+  const items = SIGNATURE.map((n) => all.find((i) => i.name === n)).filter(Boolean);
+  $('#menuRail').innerHTML = items.map((it) => `
+    <li data-reveal>
+      <a class="pcard-btn" href="/menu/#cat-${it.cat === 'new' ? 'new' : 'beef'}">
+        ${it.cat === 'new' ? `<em class="pcard-new">${t('menu.new')}</em>` : ''}
+        <span class="pcard-img"><img src="${productImg(it.name)}" alt="${it.name}" width="400" height="400" loading="lazy" decoding="async" /></span>
+        <span class="pcard-name">${it.name}</span>
+        <span class="pcard-price"><small>OMR</small> ${it.price}</span>
+        ${it.ing ? `<span class="pcard-ing">${it.ing[lang]}</span>` : ''}
+      </a>
     </li>`).join('');
+  revealAll();
 }
-
-$('#menuTabs').addEventListener('click', (e) => {
-  const b = e.target.closest('button[data-cat]');
-  if (!b || b.dataset.cat === menuCat) return;
-  menuCat = b.dataset.cat;
-  renderMenu();
-  if (!reduce) gsap.from('#menuList .item', { y: 24, autoAlpha: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out' });
-  ScrollTrigger.refresh();
-});
 
 /* ---------------- branches ---------------- */
 function renderBranches() {
