@@ -1,4 +1,4 @@
-import{i as n,r as o,g as e,$ as s,o as l,b as i,d as c,L as d,e as g,c as p}from"./pages-DPaBFKMP.js";n("leadership");const m={salim:992,sahal:935,mohammed:943,mubarak:887};function u(){const r=p();c("#leadRow").innerHTML=d.map((a,t)=>`
+import{i as n,r as o,g as e,$ as s,o as l,b as i,d as c,L as d,e as g,c as p}from"./pages-CpuV6Lx3.js";n("leadership");const m={salim:992,sahal:935,mohammed:943,mubarak:887};function u(){const r=p();c("#leadRow").innerHTML=d.map((a,t)=>`
     <li class="lead-card">
       <span class="lead-name"><span>${a.name[r]}</span></span>
       <span class="lead-photo-wrap"><img src="/img/team/${a.img}.webp" alt="${a.name[r]}" width="640" height="${m[a.img]}" ${t<2?'fetchpriority="high"':'loading="lazy"'} decoding="async" /></span>
