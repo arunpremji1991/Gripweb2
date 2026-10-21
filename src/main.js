@@ -1,4 +1,4 @@
-import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, onLang, applyLang, initCore, revealAll, renderMarquee } from './core.js';
+import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, lp, onLang, applyLang, initCore, revealAll, renderBranchCards } from './core.js';
 import './pages.css';
 import { MENU, BRANCHES, LEADERS, ORDER_URL, productImg } from './data.js';
 import { initAssembly } from './burger.js';
@@ -15,7 +15,7 @@ function renderMenu() {
   const items = SIGNATURE.map((n) => all.find((i) => i.name === n)).filter(Boolean);
   $('#menuRail').innerHTML = items.map((it) => `
     <li data-reveal>
-      <a class="pcard-btn" href="/menu/#cat-${it.cat === 'new' ? 'new' : 'beef'}">
+      <a class="pcard-btn" href="${lp('/menu/')}#cat-${it.cat === 'new' ? 'new' : 'beef'}">
         ${it.cat === 'new' ? `<em class="pcard-new">${t('menu.new')}</em>` : ''}
         <span class="pcard-img"><img src="${productImg(it.name)}" alt="${it.name}" width="400" height="400" loading="lazy" decoding="async" /></span>
         <span class="pcard-name">${it.name}</span>
@@ -27,24 +27,9 @@ function renderMenu() {
 }
 
 /* ---------------- branches ---------------- */
-function renderBranches() {
-  $('#branches').innerHTML = BRANCHES.map((b, i) => `
-    <article class="branch" data-reveal>
-      <img class="branch-chef wob" src="/brand/character-chef-${i % 2 ? 'burger-box' : 'curled'}.png" alt="" width="735" height="745" loading="lazy" />
-      <h3>${b.name}</h3>
-      <p class="branch-city">${t('loc.city')}</p>
-      <p class="branch-addr" dir="ltr">${b.address}</p>
-      <a class="branch-tel" href="tel:${b.tel}" dir="ltr">${b.phone}</a>
-      <div class="branch-cta">
-        <a class="btn btn-cream" href="${b.maps}" target="_blank" rel="noopener">${t('cta.directions')}</a>
-        <a class="btn btn-ghost" href="tel:${b.tel}">${t('cta.call')}</a>
-        <a class="btn btn-ghost" href="${ORDER_URL[lang]}" target="_blank" rel="noopener">${t('cta.orderOnline')}</a>
-      </div>
-    </article>`).join('');
-  revealAll();
-}
+const renderBranches = () => renderBranchCards($('#branches'));
 
-/* ---------------- /* ---------------- nav state (home anchors) ---------------- */
+/* ---------------- nav state (home anchors) ---------------- */
 let activeKey = '';
 const markActive = () => $$('.nav-links a[data-nav]').forEach((a) => {
   const on = a.dataset.nav === activeKey && activeKey === 'locations';
@@ -64,7 +49,7 @@ onLang(markActive);
 function renderTeam() {
   $('#teamRow').innerHTML = LEADERS.map((p, i) => `
     <li class="team-card" data-reveal>
-      <a href="/leadership/" aria-label="${p.name[lang]}">
+      <a href="${lp('/leadership/')}" aria-label="${p.name[lang]}">
         <span class="team-photo"><img src="/img/team/${p.img}.webp" alt="" width="640" height="${[992, 935, 943, 887][i]}" loading="lazy" /></span>
         <span class="team-name">${p.name[lang]}</span>
       </a>

@@ -244,3 +244,13 @@
   .rating-card { flex-direction: column; align-items: flex-start; gap: 18px; padding: 26px 24px; }
   .rating-row { gap: 30px; }
 }
+
+/* ============ LANDING PAGE: smash burger in Salalah ============ */
+.menu-rail.four { grid-template-columns: repeat(4, 1fr); }
+.what .photo-frame { aspect-ratio: 4 / 4.2; }
+.faq-sec { position: relative; background: var(--cream); padding: clamp(80px, 11vw, 150px) 0; isolation: isolate; }
+.faq-wrap { max-width: 900px; }
+.faq-wrap .h2 { margin: 8px 0 0; }
+.try { padding-top: clamp(70px, 9vw, 130px); }
+@media (max-width: 960px) { .menu-rail.four { grid-template-columns: none; } }
+@media (max-width: 760px) { .faq-sec { padding-block: 92px; } .what { padding-block: 92px; } }

@@ -22,13 +22,17 @@ export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 export const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------------- language ---------------- */
-let lang = 'en';
-try { lang = localStorage.getItem('grip-lang') || 'en'; } catch { /* storage unavailable */ }
-if (!I18N[lang]) lang = 'en';
+/* ---------------- language: decided by the page URL (/ = English, /ar/ = Arabic) ---------------- */
+let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
 export const getLang = () => lang;
 export const t = (k) => I18N[lang][k] ?? I18N.en[k] ?? '';
 export const orderUrl = () => ORDER_URL[lang];
+/** prefix an internal path with the current language ('/menu/' -> '/ar/menu/') */
+export const lp = (path) => (lang === 'ar' ? '/ar' : '') + path;
+const otherLangUrl = () => {
+  const p = location.pathname;
+  return lang === 'ar' ? p.replace(/^\/ar(\/|$)/, '/') || '/' : '/ar' + (p === '/' ? '/' : p);
+};
 
 const langListeners = [];
 export const onLang = (fn) => langListeners.push(fn);
@@ -52,32 +56,32 @@ export function goTo(hash) {
 /* ---------------- shared chrome (header, drawer, footer) ---------------- */
 let page = 'home';
 const NAV = [
-  { key: 'story', href: '/our-story/', label: 'nav.story' },
-  { key: 'menu', href: '/menu/', label: 'nav.menu' },
-  { key: 'leadership', href: '/leadership/', label: 'nav.leadership' },
-  { key: 'locations', href: '/#locations', label: 'nav.locations' },
+  { key: 'story', path: '/our-story/', label: 'nav.story' },
+  { key: 'menu', path: '/menu/', label: 'nav.menu' },
+  { key: 'leadership', path: '/leadership/', label: 'nav.leadership' },
+  { key: 'locations', path: '/#locations', label: 'nav.locations' },
 ];
 
 function chromeHtml() {
   const links = (cls) => NAV.map((n) => {
     const current = n.key === page;
-    return `<a href="${n.href}" class="${cls}${current ? ' active' : ''}" data-nav="${n.key}"${current ? ' aria-current="page"' : ''}>${t(n.label)}</a>`;
+    return `<a href="${lp(n.path)}" class="${cls}${current ? ' active' : ''}" data-nav="${n.key}"${current ? ' aria-current="page"' : ''}>${t(n.label)}</a>`;
   }).join('');
   return {
     header: `
       <a class="skip" href="#main">${t('nav.skip')}</a>
       <header class="nav" id="nav">
-        <a class="nav-logo" href="/" aria-label="${t('a11y.home')}"><span class="logo-mask" role="img" aria-label="GRIP"></span></a>
+        <a class="nav-logo" href="${lp('/')}" aria-label="${t('a11y.home')}"><span class="logo-mask" role="img" aria-label="GRIP"></span></a>
         <nav class="nav-links" aria-label="Primary">${links('')}</nav>
         <div class="nav-actions">
-          <button class="lang" type="button" id="langBtn">${t('a11y.lang')}</button>
+          <a class="lang" id="langBtn" href="${otherLangUrl()}" hreflang="${lang === 'ar' ? 'en' : 'ar'}" lang="${lang === 'ar' ? 'en' : 'ar'}">${t('a11y.lang')}</a>
           <a class="btn btn-sm js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
           <button class="burger" type="button" id="burgerBtn" aria-expanded="false" aria-controls="drawer" aria-label="${t('a11y.menu')}"><span></span><span></span></button>
         </div>
       </header>
       <div class="drawer" id="drawer" hidden>
         <nav aria-label="Mobile">
-          <a href="/" data-nav="home">${t('nav.home')}</a>
+          <a href="${lp('/')}" data-nav="home">${t('nav.home')}</a>
           ${links('')}
           <a class="btn btn-cream js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
         </nav>
@@ -101,15 +105,19 @@ function chromeHtml() {
           </div>
           <nav class="foot-col" aria-label="Footer">
             <h3>${t('foot.nav')}</h3>
-            <a href="/">${t('nav.home')}</a>
-            ${NAV.map((n) => `<a href="${n.href}">${t(n.label)}</a>`).join('')}
+            <a href="${lp('/')}">${t('nav.home')}</a>
+            ${NAV.map((n) => `<a href="${lp(n.path)}">${t(n.label)}</a>`).join('')}
+            <a href="${lp('/smash-burger-salalah/')}">${t('nav.landing')}</a>
           </nav>
           <div class="foot-col">
             <h3>${t('foot.branches')}</h3>
             ${BRANCHES.map((b) => `<p><strong>${b.name}</strong><a href="tel:${b.tel}" dir="ltr">${b.phone}</a></p>`).join('')}
           </div>
         </div>
-        <p class="foot-rights">${t('foot.rights')}</p>
+        <div class="foot-rights">
+          <p>${t('foot.rights')}</p>
+          <p class="foot-credit">${t('foot.credit')} <strong>Glomark</strong></p>
+        </div>
       </footer>`,
   };
 }
@@ -131,7 +139,6 @@ export function applyLang() {
   const root = document.documentElement;
   root.lang = lang;
   root.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.title = t(`title.${page}`) || document.title;
   renderChrome();
   $$('[data-i18n]').forEach((el) => { const v = t(el.dataset.i18n); if (v) el.textContent = v; });
   $$('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
@@ -187,13 +194,6 @@ document.addEventListener('click', (e) => {
   const burger = e.target.closest('#burgerBtn');
   if (burger) { ($('#drawer').hidden ? openDrawer : closeDrawer)(); return; }
 
-  if (e.target.closest('#langBtn')) {
-    lang = lang === 'en' ? 'ar' : 'en';
-    try { localStorage.setItem('grip-lang', lang); } catch { /* ignore */ }
-    applyLang();
-    return;
-  }
-
   const a = e.target.closest('a[href]');
   if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
   const href = a.getAttribute('href');
@@ -224,6 +224,25 @@ export function revealAll() {
     el.classList.add('is-bound');
     gsap.from(el, { y: 48, autoAlpha: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
   });
+}
+
+/* ---------------- branch cards (home + landing page) ---------------- */
+export function renderBranchCards(el) {
+  if (!el) return;
+  el.innerHTML = BRANCHES.map((b, i) => `
+    <article class="branch" data-reveal>
+      <img class="branch-chef wob" src="/brand/character-chef-${i % 2 ? 'burger-box' : 'curled'}.png" alt="" width="735" height="745" loading="lazy" />
+      <h3>${b.name}</h3>
+      <p class="branch-city">${t('loc.city')}</p>
+      <p class="branch-addr" dir="ltr">${b.address}</p>
+      <a class="branch-tel" href="tel:${b.tel}" dir="ltr">${b.phone}</a>
+      <div class="branch-cta">
+        <a class="btn btn-cream" href="${b.maps}" target="_blank" rel="noopener">${t('cta.directions')}</a>
+        <a class="btn btn-ghost" href="tel:${b.tel}">${t('cta.call')}</a>
+        <a class="btn btn-ghost" href="${ORDER_URL[lang]}" target="_blank" rel="noopener">${t('cta.orderOnline')}</a>
+      </div>
+    </article>`).join('');
+  revealAll();
 }
 
 /* ---------------- marquee (shared strip) ---------------- */
