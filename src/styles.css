@@ -403,3 +403,8 @@ ul, ol { list-style: none; }
   .foot-col h3 { margin-bottom: 10px; }
   .foot-rights { margin-top: 36px; }
 }
+
+.story-more { margin-top: 30px; }
+
+/* decorative stickers may bleed past a section edge; never create sideways scroll */
+main { overflow-x: clip; }

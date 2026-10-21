@@ -136,3 +136,60 @@
   .page-hero .hero-cta { margin-top: 8px; }
 }
 .pcard-btn { text-align: start; }
+
+/* ============ OUR STORY PAGE ============ */
+.vision { position: relative; background: var(--cream); padding: clamp(80px, 11vw, 160px) 0; isolation: isolate; }
+.vision-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(36px, 6vw, 96px); align-items: center; }
+.vision-copy { display: grid; gap: 20px; }
+.vision-copy .h2 { margin: 0 0 6px; }
+.vision-copy .lead { font-size: clamp(19px, 2vw, 26px); line-height: 1.4; }
+.exp { display: grid; gap: 12px; margin-top: 10px; }
+.exp > span { font: 700 12px var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; }
+.vision-photo { position: relative; max-width: 470px; }
+.vision-photo .sticker { inset-inline-start: -8%; bottom: 12%; }
+.vision-photo .story-chef { inset-inline-end: -6%; top: -8%; }
+.shot-night { background: var(--ink); }
+.shot-night .shot-frame { height: clamp(300px, 70vh, 640px); background: var(--ink); }
+.shot-night .night-img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; display: block; }
+.shot-night .shot-frame::after { background: linear-gradient(180deg, rgba(26, 11, 6, 0.1), rgba(26, 11, 6, 0.45)); }
+
+.journey-sec { background: var(--ink); color: var(--cream); padding: clamp(80px, 11vw, 150px) 0 clamp(90px, 12vw, 170px); position: relative; overflow: hidden; }
+.journey-head .h2 { color: var(--cream); margin: 8px 0 clamp(26px, 4vw, 50px); }
+.journey-text { display: grid; gap: 18px; max-width: 70ch; }
+.journey-text .lead { font-size: clamp(19px, 2vw, 26px); line-height: 1.4; }
+.journey-text p:not(.lead) { opacity: 0.85; }
+
+.journey { --p: 0; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: clamp(56px, 8vw, 110px); padding-top: 12px; }
+.journey::before, .journey::after { content: ''; position: absolute; inset-inline: 12.5%; top: 58px; height: 0; border-top: 4px dotted rgba(255, 243, 234, 0.25); }
+.journey::after { border-top-color: var(--orange); inset-inline-end: auto; width: calc(75% * var(--p)); }
+[dir='rtl'] .journey::after { inset-inline-start: auto; inset-inline-end: 12.5%; }
+.jstep { position: relative; display: grid; justify-items: center; gap: 22px; text-align: center; padding-inline: 4px; }
+.jpin { display: grid; place-items: center; width: 44px; height: 56px; color: var(--orange); }
+.jpin svg { width: 100%; height: 100%; fill: currentColor; stroke: none; overflow: visible; }
+.jpin svg circle { fill: var(--ink); }
+.jstep-last .jpin svg { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.jstep-last .jpin svg path { fill: currentColor; fill-opacity: 0.9; }
+.jlabel { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(16px, 1.9vw, 26px); line-height: 1.1; max-width: 12ch; margin-top: 18px; }
+[dir='rtl'] .jlabel { text-transform: none; font-weight: 700; }
+.jstep::before { content: ''; position: absolute; top: 52px; left: 50%; translate: -50% 0; width: 14px; height: 14px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 6px rgba(240, 78, 36, 0.25); }
+.jstep .jpin { position: relative; top: -10px; }
+
+@media (max-width: 960px) {
+  .vision-inner { grid-template-columns: 1fr; }
+  .vision-photo { max-width: 420px; }
+}
+@media (max-width: 860px) {
+  .journey { grid-template-columns: 1fr; gap: 44px; padding-inline-start: 62px; margin-top: 60px; padding-block: 8px; }
+  .journey::before, .journey::after { inset-inline: auto; inset-inline-start: 22px; top: 36px; bottom: 36px; height: auto; width: 0; border-top: 0; border-inline-start: 4px dotted rgba(255, 243, 234, 0.25); }
+  .journey::after { border-inline-start-color: var(--orange); width: 0; height: calc((100% - 72px) * var(--p)); bottom: auto; inset-inline-end: auto; }
+  [dir='rtl'] .journey::after { inset-inline-start: 22px; inset-inline-end: auto; }
+  .jstep { justify-items: start; grid-template-columns: auto 1fr; align-items: center; text-align: start; gap: 18px; padding: 0; min-height: 64px; }
+  .jstep::before { display: none; }
+  .jstep .jpin { position: absolute; inset-inline-start: -62px; top: 50%; translate: 0 -50%; width: 44px; height: 56px; background: var(--ink); padding-block: 4px; }
+  .jlabel { max-width: none; margin-top: 0; font-size: clamp(20px, 5.4vw, 26px); }
+}
+@media (max-width: 760px) {
+  .vision { padding-block: 92px; }
+  .vision-inner { gap: 52px; }
+  .journey-sec { padding-block: 92px 100px; }
+}

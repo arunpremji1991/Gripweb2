@@ -52,7 +52,7 @@ export function goTo(hash) {
 /* ---------------- shared chrome (header, drawer, footer) ---------------- */
 let page = 'home';
 const NAV = [
-  { key: 'story', href: '/#story', label: 'nav.story' },
+  { key: 'story', href: '/our-story/', label: 'nav.story' },
   { key: 'menu', href: '/menu/', label: 'nav.menu' },
   { key: 'leadership', href: '/leadership/', label: 'nav.leadership' },
   { key: 'locations', href: '/#locations', label: 'nav.locations' },

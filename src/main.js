@@ -46,10 +46,10 @@ function renderBranches() {
 /* ---------------- /* ---------------- nav state (home anchors) ---------------- */
 let activeKey = '';
 const markActive = () => $$('.nav-links a[data-nav]').forEach((a) => {
-  const on = a.dataset.nav === activeKey && ['story', 'locations'].includes(activeKey);
+  const on = a.dataset.nav === activeKey && activeKey === 'locations';
   a.classList.toggle('active', on);
 });
-[['#story', 'story'], ['#locations', 'locations']].forEach(([id, key]) => {
+[['#locations', 'locations']].forEach(([id, key]) => {
   ScrollTrigger.create({
     trigger: id,
     start: 'top 55%',

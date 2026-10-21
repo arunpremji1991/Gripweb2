@@ -9,6 +9,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         menu: resolve(__dirname, 'menu/index.html'),
         leadership: resolve(__dirname, 'leadership/index.html'),
+        story: resolve(__dirname, 'our-story/index.html'),
       },
     },
   },
