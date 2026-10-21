@@ -1,0 +1,9 @@
+import{i as s,r as n,g as e,$ as c,o as l,f as i,d as o,b as g,M as p,l as d,p as u,e as m,c as h}from"./pages-DJcQ3iyR.js";s("landing");const f=["Old School","Mushroom Swiss","Truffle","Grip"];function b(){const r=h(),t=p.find(a=>a.id==="burgers").items.filter(a=>f.includes(a.name));o("#tryRail").innerHTML=t.map(a=>`
+    <li data-reveal>
+      <a class="pcard-btn" href="${d("/menu/")}#cat-beef">
+        <span class="pcard-img"><img src="${u(a.name)}" alt="${a.name} smash burger" width="400" height="400" loading="lazy" decoding="async" /></span>
+        <span class="pcard-name">${a.name}</span>
+        <span class="pcard-price"><small>OMR</small> ${a.price}</span>
+        ${a.ing?`<span class="pcard-ing">${a.ing[r]}</span>`:""}
+      </a>
+    </li>`).join(""),m()}n||(e.from(".page-title .line > span",{yPercent:115,duration:.9,stagger:.12,ease:"power4.out",delay:.25}),e.from(".page-hero .kicker, .page-sub, .page-hero .hero-cta",{y:20,autoAlpha:0,duration:.7,stagger:.1,ease:"power3.out",delay:.4}),e.from(".page-hero-chef",{y:120,rotation:8,autoAlpha:0,duration:1,ease:"back.out(1.5)",delay:.3}),e.to(".page-hero .hero-giant",{yPercent:18,ease:"none",scrollTrigger:{trigger:".page-hero",start:"top top",end:"bottom top",scrub:!0}}),c("[data-parallax]").forEach(r=>{const t=parseFloat(r.dataset.parallax);e.fromTo(r,{yPercent:-t*100},{yPercent:t*100,ease:"none",scrollTrigger:{trigger:r.parentElement,start:"top bottom",end:"bottom top",scrub:!0}})}),e.from(".what .sticker",{scale:.4,rotation:-40,autoAlpha:0,duration:.9,ease:"back.out(1.7)",scrollTrigger:{trigger:".vision-photo",start:"top 70%",once:!0}}),e.from(".order-chef",{scale:.4,rotation:-20,autoAlpha:0,duration:1,ease:"back.out(1.7)",scrollTrigger:{trigger:".order",start:"top 60%",once:!0}}),e.from(".order-art",{rotation:-8,scale:.9,ease:"none",scrollTrigger:{trigger:".order",start:"top bottom",end:"center center",scrub:!0}}));l(()=>{b(),i(o("#branches"))});g();

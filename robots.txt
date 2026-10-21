@@ -1,0 +1,3 @@
+# Temporary address: do not index. Rebuild with SITE_URL=https://your-domain for production.
+User-agent: *
+Disallow: /
