@@ -1,0 +1,375 @@
+{
+ "version": 1,
+ "sections": [
+  {
+   "id": "new",
+   "items": [
+    {
+     "id": "i1",
+     "name": "Brisket Burger",
+     "name_ar": "",
+     "price": "3.400",
+     "ing_en": "Brioche sesame bun, Pulled beef brisket, Grip jam sauce, Sliced jalapeno",
+     "ing_ar": "خبز بريوش بالسمسم، لحم بريسكت بقري، صلصة جريب جام، هالابينو مقطع",
+     "image": "/img/menu/brisket-burger.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i2",
+     "name": "Loaded Brisket Fries",
+     "name_ar": "",
+     "price": "3.200",
+     "ing_en": "French fries, Pulled beef brisket, Grip jam sauce, Crispy onion, Sliced jalapeno",
+     "ing_ar": "بطاطس مقلية، لحم بريسكت بقري، صلصة جريب جام، بصل مقرمش، هالابينو مقطع",
+     "image": "/img/menu/loaded-brisket-fries.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i3",
+     "name": "Chilli Lime Chicken Bites",
+     "name_ar": "",
+     "price": "2.300",
+     "ing_en": "Bite size chicken tender, Grip lime bites seasoning, Ranch sauce, Lime wedges",
+     "ing_ar": "قطع دجاج تندر صغيرة، توابل الليمون من جريب، صلصة رانش، شرائح ليمون",
+     "image": "/img/menu/chilli-lime-chicken-bites.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i4",
+     "name": "Grip Hot Dog",
+     "name_ar": "",
+     "price": "1.800",
+     "ing_en": "Hot dog bun, Jumbo chicken hotdog, Ketchup, Mayonnaise, Yellow mustard, Crispy onion, Chopped jalapeno, Sweet corn",
+     "ing_ar": "خبز هوت دوغ، نقانق دجاج جامبو، كاتشب، مايونيز، خردل أصفر، بصل مقرمش، هالابينو مفروم، ذرة حلوة",
+     "image": "/img/menu/grip-hot-dog.jpg",
+     "hidden": false
+    }
+   ]
+  },
+  {
+   "id": "beef",
+   "items": [
+    {
+     "id": "i5",
+     "name": "Old School",
+     "name_ar": "",
+     "price": "2.300",
+     "ing_en": "Brioche bun, Double beef patty, American cheese, Onion, Pickle, Ketchup, Mustard",
+     "ing_ar": "خبز بريوش، قطعتا لحم بقري، جبنة أمريكية، بصل، مخلل، كاتشب، خردل",
+     "image": "/img/menu/old-school.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i6",
+     "name": "Mushroom Swiss",
+     "name_ar": "",
+     "price": "2.400",
+     "ing_en": "Brioche bun, Double beef patty, Swiss cheese, Mushroom sauce",
+     "ing_ar": "خبز بريوش، قطعتا لحم بقري، جبنة سويسرية، صلصة الفطر",
+     "image": "/img/menu/mushroom-swiss.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i7",
+     "name": "Truffle",
+     "name_ar": "",
+     "price": "2.500",
+     "ing_en": "Brioche bun, Double beef patty, White cheese, Caramelized onion, Truffle sauce",
+     "ing_ar": "خبز بريوش، قطعتا لحم بقري، جبنة بيضاء، بصل مكرمل، صلصة الكمأة",
+     "image": "/img/menu/truffle.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i8",
+     "name": "Grip",
+     "name_ar": "",
+     "price": "2.500",
+     "ing_en": "Brioche bun, Double beef patty, American cheese, Bacon jam, Grilled onion, Bacon jam sauce",
+     "ing_ar": "خبز بريوش، قطعتا لحم بقري، جبنة أمريكية، مربى لحم مقدد، بصل مشوي، صلصة مربى لحم مقدد",
+     "image": "/img/menu/grip.jpg",
+     "hidden": false
+    }
+   ]
+  },
+  {
+   "id": "chicken",
+   "items": [
+    {
+     "id": "i9",
+     "name": "Classic",
+     "name_ar": "",
+     "price": "2.000",
+     "ing_en": "Brioche bun, Crispy chicken, American cheese, Lettuce, House mayo",
+     "ing_ar": "خبز بريوش، دجاج مقرمش، جبنة أمريكية، خس، مايونيز البيت",
+     "image": "/img/menu/classic.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i10",
+     "name": "Original",
+     "name_ar": "",
+     "price": "2.100",
+     "ing_en": "Brioche bun, Crispy chicken, American cheese, Lettuce, Pickle, Twister sauce",
+     "ing_ar": "خبز بريوش، دجاج مقرمش، جبنة أمريكية، خس، مخلل، صلصة تويستر",
+     "image": "/img/menu/original.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i11",
+     "name": "Buffalo",
+     "name_ar": "",
+     "price": "2.200",
+     "ing_en": "Brioche bun, Crispy chicken glazed in maple buffalo sauce, American cheese, Coleslaw, Ranch sauce",
+     "ing_ar": "خبز بريوش، دجاج مقرمش بصلصة البافلو والقيقب، جبنة أمريكية، كولسلو، صلصة رانش",
+     "image": "/img/menu/buffalo.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i12",
+     "name": "Hot Nashville",
+     "name_ar": "",
+     "price": "2.300",
+     "ing_en": "Brioche bun, Nashville spicy crispy chicken, American cheese, Pickle, Comeback sauce",
+     "ing_ar": "خبز بريوش، دجاج ناشفيل حار ومقرمش، جبنة أمريكية، مخلل، صلصة كم باك",
+     "image": "/img/menu/hot-nashville.jpg",
+     "hidden": false
+    }
+   ]
+  },
+  {
+   "id": "sides",
+   "items": [
+    {
+     "id": "i13",
+     "name": "Loaded Beef Fries",
+     "name_ar": "",
+     "price": "2.800",
+     "ing_en": "French fries, Grilled beef, Cheddar cheese, Crispy onion, Jalapeno, Smokey mayo",
+     "ing_ar": "بطاطس مقلية، لحم بقري مشوي، جبنة شيدر، بصل مقرمش، هالابينو، مايونيز مدخن",
+     "image": "/img/menu/loaded-beef-fries.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i14",
+     "name": "Loaded Nashville Fries",
+     "name_ar": "",
+     "price": "2.700",
+     "ing_en": "French fries, Nashville spicy crispy chicken, Cheddar cheese, Crispy onion, Pickle, Comeback sauce",
+     "ing_ar": "بطاطس مقلية، دجاج ناشفيل حار ومقرمش، جبنة شيدر، بصل مقرمش، مخلل، صلصة كم باك",
+     "image": "/img/menu/loaded-nashville-fries.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i15",
+     "name": "Nashville Chicken Tenders",
+     "name_ar": "",
+     "price": "2.900",
+     "ing_en": "2pcs of Nashville tenders, Belgian waffle, Crisscut fries, Comeback sauce",
+     "ing_ar": "قطعتا تندر ناشفيل، وافل بلجيكي، بطاطس كريس كت، صلصة كم باك",
+     "image": "/img/menu/nashville-chicken-tenders.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i16",
+     "name": "French Fries",
+     "name_ar": "",
+     "price": "0.700",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/french-fries.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i17",
+     "name": "Kids Meal",
+     "name_ar": "",
+     "price": "1.500",
+     "ing_en": "Chicken nuggets, French fries, Juice",
+     "ing_ar": "ناجتس دجاج، بطاطس مقلية، عصير",
+     "image": "/img/menu/kids-meal.jpg",
+     "hidden": false
+    }
+   ]
+  },
+  {
+   "id": "sweet",
+   "items": [
+    {
+     "id": "i18",
+     "name": "Vanilla Ice Cream",
+     "name_ar": "",
+     "price": "1.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/vanilla-ice-cream.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i19",
+     "name": "Chocolate Ice Cream",
+     "name_ar": "",
+     "price": "1.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/chocolate-ice-cream.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i20",
+     "name": "Strawberry Milkshake",
+     "name_ar": "",
+     "price": "1.700",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/strawberry-milkshake.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i21",
+     "name": "Mango Milkshake",
+     "name_ar": "",
+     "price": "1.700",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/mango-milkshake.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i22",
+     "name": "Peanut Milkshake",
+     "name_ar": "",
+     "price": "1.600",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/peanut-milkshake.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i23",
+     "name": "Oreo Milkshake",
+     "name_ar": "",
+     "price": "1.600",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/oreo-milkshake.jpg",
+     "hidden": false
+    }
+   ]
+  },
+  {
+   "id": "drinks",
+   "items": [
+    {
+     "id": "i24",
+     "name": "Alsi Cola",
+     "name_ar": "",
+     "price": "0.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/alsi-cola.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i25",
+     "name": "Alsi Cola Zero",
+     "name_ar": "",
+     "price": "0.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/alsi-cola-zero.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i26",
+     "name": "Alsi Citrus",
+     "name_ar": "",
+     "price": "0.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/alsi-citrus.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i27",
+     "name": "Fifa Orange",
+     "name_ar": "",
+     "price": "0.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/fifa-orange.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i28",
+     "name": "Stream",
+     "name_ar": "",
+     "price": "0.400",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/stream.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i29",
+     "name": "Oasis 500ml",
+     "name_ar": "",
+     "price": "0.300",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/oasis-500ml.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i30",
+     "name": "Pepsi",
+     "name_ar": "",
+     "price": "0.500",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/pepsi.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i31",
+     "name": "Diet Pepsi",
+     "name_ar": "",
+     "price": "0.500",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/diet-pepsi.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i32",
+     "name": "Mountain Dew",
+     "name_ar": "",
+     "price": "0.500",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/mountain-dew.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i33",
+     "name": "7UP",
+     "name_ar": "",
+     "price": "0.500",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/7up.jpg",
+     "hidden": false
+    },
+    {
+     "id": "i34",
+     "name": "Mirinda",
+     "name_ar": "",
+     "price": "0.500",
+     "ing_en": "",
+     "ing_ar": "",
+     "image": "/img/menu/mirinda.jpg",
+     "hidden": false
+    }
+   ]
+  }
+ ]
+}
