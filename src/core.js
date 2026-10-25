@@ -118,6 +118,7 @@ function chromeHtml() {
         <div class="foot-rights">
           <p>${t('foot.rights')}</p>
           <p class="foot-credit">${t('foot.credit')} <strong>Glomark</strong></p>
+          <a class="foot-admin" href="/admin/" rel="nofollow">${t('foot.admin')}</a>
         </div>
       </footer>`,
   };

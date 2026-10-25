@@ -61,7 +61,7 @@ function localize(html, lang, path) {
   if (lang === 'ar') {
     // keep visitors inside the Arabic version of the site
     out = out.replace(/(<a\b[^>]*?\shref=")(\/(?!\/)[^"]*)(")/g, (full, a, href, q) => {
-      if (/^\/(assets|brand|img|src|@vite|@id|node_modules)\b/.test(href)) return full;
+      if (/^\/(assets|brand|img|src|admin|api|uploads|@vite|@id|node_modules)\b/.test(href)) return full;
       return `${a}/ar${href === '/' ? '/' : href}${q}`;
     });
   }

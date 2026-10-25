@@ -423,3 +423,8 @@ main { overflow-x: clip; }
 .faq-item summary::after { content: '+'; flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--orange); color: var(--cream); display: grid; place-items: center; font-size: 24px; line-height: 1; padding-bottom: 3px; transition: transform 0.3s var(--ease); }
 .faq-item details[open] summary::after { transform: rotate(45deg); }
 .faq-item p { padding: 0 24px 22px; max-width: 70ch; opacity: 0.85; }
+
+/* footer: admin login button */
+.foot-admin { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 16px; border: 2px solid rgba(255, 243, 234, 0.35); border-radius: 999px; font: 700 13px var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: var(--cream); opacity: 0.85; transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.foot-admin:hover { background: var(--orange); border-color: var(--orange); opacity: 1; }
+[dir='rtl'] .foot-admin { text-transform: none; letter-spacing: 0; }
