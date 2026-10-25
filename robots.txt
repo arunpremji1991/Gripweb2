@@ -1,3 +1,4 @@
-# Temporary address: do not index. Rebuild with SITE_URL=https://your-domain for production.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://gripburger.om/sitemap.xml
