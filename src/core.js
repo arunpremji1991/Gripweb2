@@ -271,8 +271,14 @@ export function initCore(pageKey) {
     onUpdate: (self) => $('#nav')?.classList.toggle('is-scrolled', self.scroll() > 40),
   });
   // floating Menu shortcut (phones/tablets): appears once the visitor starts scrolling, so it never covers the hero buttons
-  const fab = () => document.body.classList.toggle('fab-on', window.scrollY > 120);
+  // ...and steps aside once the footer comes into view, so it never covers the footer buttons
+  const fab = () => {
+    const foot = document.querySelector('.foot');
+    const atFooter = foot ? foot.getBoundingClientRect().top < window.innerHeight - 40 : false;
+    document.body.classList.toggle('fab-on', window.scrollY > 120 && !atFooter);
+  };
   window.addEventListener('scroll', fab, { passive: true });
+  window.addEventListener('resize', fab);
   fab();
   onLang(renderMarquee);
   window.addEventListener('load', () => ScrollTrigger.refresh());
