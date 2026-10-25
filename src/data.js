@@ -11,8 +11,8 @@
  */
 
 export const ORDER_URL = {
-  en: 'https://menu.apetitomenu.com/GRIP/en',
-  ar: 'https://menu.apetitomenu.com/GRIP/ar',
+  en: '/menu/',
+  ar: '/ar/menu/',
 };
 
 export const SOCIAL = {

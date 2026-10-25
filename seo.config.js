@@ -12,7 +12,7 @@ import { BRANCHES } from './src/data.js';
 
 export const SITE_URL = (process.env.SITE_URL || '').replace(/\/$/, '');
 export const INSTAGRAM = 'https://www.instagram.com/grip.om/';
-export const ORDER = { en: 'https://menu.apetitomenu.com/GRIP/en', ar: 'https://menu.apetitomenu.com/GRIP/ar' };
+export const ORDER = { en: '/menu/', ar: '/ar/menu/' };
 
 /** Source file (relative to project root) for every page path */
 export const PAGES = {

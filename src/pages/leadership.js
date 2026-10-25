@@ -4,19 +4,10 @@ import { LEADERS } from '../data.js';
 
 initCore('leadership');
 
-const DIMS = { salim: 992, sahal: 935, mohammed: 943, mubarak: 887 };
-
 function renderLeaders() {
   const lang = getLang();
-  $('#leadRow').innerHTML = LEADERS.map((p, i) => `
-    <li class="lead-card">
-      <span class="lead-name"><span>${p.name[lang]}</span></span>
-      <span class="lead-photo-wrap"><img src="/img/team/${p.img}.webp" alt="${p.name[lang]}" width="640" height="${DIMS[p.img]}" ${i < 2 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" /></span>
-    </li>`).join('');
-  if (!reduce) {
-    gsap.from('.lead-card', { yPercent: 14, autoAlpha: 0, duration: 1, stagger: 0.12, ease: 'power3.out', delay: 0.35 });
-    gsap.from('.lead-name', { y: 16, autoAlpha: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out', delay: 0.9 });
-  }
+  $('#leadRow').innerHTML = LEADERS.map((p) => `<li class="lead-tag">${p.name[lang]}</li>`).join('');
+  if (!reduce) gsap.from('.lead-tag', { y: 18, autoAlpha: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.4 });
   revealAll();
 }
 
@@ -40,9 +31,3 @@ onLang(() => {
 });
 applyLang();
 
-if (!reduce) {
-  [0.06, 0.12, 0.04, 0.1].forEach((amt, i) => {
-    const cards = $$('.lead-card');
-    if (cards[i]) gsap.to(cards[i].querySelector('.lead-photo-wrap'), { yPercent: amt * 100, ease: 'none', scrollTrigger: { trigger: '.lead-hero', start: 'top top', end: 'bottom top', scrub: true } });
-  });
-}

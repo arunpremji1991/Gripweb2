@@ -254,3 +254,8 @@
 .try { padding-top: clamp(70px, 9vw, 130px); }
 @media (max-width: 960px) { .menu-rail.four { grid-template-columns: none; } }
 @media (max-width: 760px) { .faq-sec { padding-block: 92px; } .what { padding-block: 92px; } }
+
+/* leadership names (no portraits) */
+.lead-names { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px clamp(10px, 2vw, 22px); margin-top: clamp(28px, 5vw, 48px); padding-bottom: clamp(70px, 9vw, 120px); }
+.lead-tag { font-family: var(--font-display); font-size: clamp(14px, 1.5vw, 22px); text-transform: uppercase; line-height: 1.1; padding: 10px 18px; background: var(--cream); color: var(--orange); border-radius: 999px; }
+[dir='rtl'] .lead-tag { text-transform: none; font-weight: 700; }

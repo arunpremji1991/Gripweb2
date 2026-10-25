@@ -1,6 +1,6 @@
 import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, lp, onLang, applyLang, initCore, revealAll, renderBranchCards } from './core.js';
 import './pages.css';
-import { MENU, BRANCHES, LEADERS, ORDER_URL, productImg } from './data.js';
+import { MENU, BRANCHES, ORDER_URL, productImg } from './data.js';
 import { initAssembly } from './burger.js';
 
 initCore('home');
@@ -45,18 +45,6 @@ const markActive = () => $$('.nav-links a[data-nav]').forEach((a) => {
 });
 onLang(markActive);
 
-/* ---------------- leadership teaser ---------------- */
-function renderTeam() {
-  $('#teamRow').innerHTML = LEADERS.map((p, i) => `
-    <li class="team-card" data-reveal>
-      <a href="${lp('/leadership/')}" aria-label="${p.name[lang]}">
-        <span class="team-photo"><img src="/img/team/${p.img}.webp" alt="" width="640" height="${[992, 935, 943, 887][i]}" loading="lazy" /></span>
-        <span class="team-name">${p.name[lang]}</span>
-      </a>
-    </li>`).join('');
-  revealAll();
-}
-
 if (!reduce) {
   $$('[data-parallax]').forEach((el) => {
     const amt = parseFloat(el.dataset.parallax);
@@ -99,7 +87,6 @@ onLang((l) => {
   lang = l;
   renderMenu();
   renderBranches();
-  renderTeam();
   assembly?.relang?.();
 });
 applyLang();

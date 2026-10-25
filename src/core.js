@@ -128,7 +128,7 @@ function renderChrome() {
   const f = $('#site-footer');
   if (h) h.innerHTML = header;
   if (f) f.innerHTML = footer;
-  $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; });
+  $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
   if (f && !reduce) {
     ScrollTrigger.getById('footchef')?.kill();
     gsap.fromTo('.foot-chef', { yPercent: 55 }, { yPercent: 0, ease: 'none', scrollTrigger: { id: 'footchef', trigger: '.foot', start: 'top 100%', end: 'top 70%', scrub: true } });
@@ -142,7 +142,7 @@ export function applyLang() {
   renderChrome();
   $$('[data-i18n]').forEach((el) => { const v = t(el.dataset.i18n); if (v) el.textContent = v; });
   $$('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
-  $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; });
+  $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
   langListeners.forEach((fn) => fn(lang));
   ScrollTrigger.refresh();
 }
@@ -239,7 +239,7 @@ export function renderBranchCards(el) {
       <div class="branch-cta">
         <a class="btn btn-cream" href="${b.maps}" target="_blank" rel="noopener">${t('cta.directions')}</a>
         <a class="btn btn-ghost" href="tel:${b.tel}">${t('cta.call')}</a>
-        <a class="btn btn-ghost" href="${ORDER_URL[lang]}" target="_blank" rel="noopener">${t('cta.orderOnline')}</a>
+        <a class="btn btn-ghost" href="${ORDER_URL[lang]}">${t('cta.orderOnline')}</a>
       </div>
     </article>`).join('');
   revealAll();
