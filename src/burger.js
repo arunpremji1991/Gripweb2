@@ -90,7 +90,7 @@ export function initAssembly({ getLang }) {
     const mobile = isMobile();
     const span = STAGE_H + (LAYERS.length - 1) * gap() + 36;
     const widthCap = mobile ? (vw * 0.9) / 400 : (vw * 0.42) / 400;
-    const kAsm = Math.max(0.5, Math.min((vh - (mobile ? 300 : 170)) / STAGE_H, widthCap, 1.5));
+    const kAsm = Math.max(0.5, Math.min((vh - (mobile ? 300 : 170)) / STAGE_H, widthCap, vw >= 1900 ? 2.1 : 1.5));
     const kExp = Math.max(0.45, Math.min((vh - (mobile ? 260 : 120)) / span, widthCap));
     bumpExp = Math.min(1, kExp / kAsm);
     stage.style.setProperty('--k', kAsm.toFixed(3));

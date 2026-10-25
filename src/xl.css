@@ -1,0 +1,84 @@
+/* ============ LARGE SCREENS (24-32" monitors, 1700px and up) ============
+   Loaded last so it can enlarge the layout, type and hero without touching the
+   laptop/tablet/phone rules. Steps: 1700 (iMac/FHD), 2200 (27" QHD / 5K). */
+
+@media (min-width: 1700px) {
+  :root { --gutter: clamp(72px, 5vw, 120px); }
+  body { font-size: 19px; }
+  .wrap, .foot-rights { width: min(1560px, 100% - var(--gutter) * 2); }
+
+  .nav { top: 18px; padding: 10px 12px 10px 28px; }
+  [dir='rtl'] .nav { padding: 10px 28px 10px 12px; }
+  .nav-logo { width: 100px; }
+  .nav-links { gap: 44px; }
+  .nav-links a { font-size: 17px; }
+  .lang { font-size: 15px; padding: 8px 16px; }
+  .btn { font-size: 19px; padding: 16px 30px; min-height: 54px; }
+  .btn-sm { font-size: 16px; min-height: 44px; }
+
+  .kicker { font-size: 30px; }
+  .lead { font-size: 24px; }
+  .hero-sub, .page-sub { font-size: 22px; max-width: 38ch; }
+  .asm-desc { font-size: 34px; }
+  .asm-copy { width: min(680px, 46vw); }
+  .asm-panel { width: min(520px, 40vw); }
+  .asm-final { width: min(640px, 46vw); }
+
+  .pgrid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .pcard-name { font-size: clamp(24px, 1.6vw, 32px); }
+  .pcard-price { font-size: 23px; }
+  .pcard-ing { font-size: 16px; }
+  .cat-nav-inner a { font-size: 16px; min-height: 44px; }
+
+  .foot { padding-top: 90px; }
+  .foot-logo { width: 160px; }
+  .foot-col h3 { font-size: 21px; }
+  .foot-rights { font-size: 15px; }
+}
+
+@media (min-width: 2200px) {
+  :root { --gutter: clamp(96px, 6vw, 200px); }
+  body { font-size: 22px; }
+  .wrap, .foot-rights { width: min(2000px, 100% - var(--gutter) * 2); }
+
+  .nav { top: 22px; }
+  .nav-logo { width: 116px; }
+  .nav-links { gap: 54px; }
+  .nav-links a { font-size: 20px; }
+  .lang { font-size: 17px; }
+  .btn { font-size: 22px; padding: 19px 36px; min-height: 62px; }
+  .btn-sm { font-size: 18px; min-height: 50px; }
+  .btn-lg { font-size: 34px; padding: 26px 52px; }
+
+  .kicker { font-size: 38px; }
+  .h2 { font-size: clamp(40px, 5.4vw, 140px); }
+  .lead { font-size: 29px; }
+  .hero-title { font-size: clamp(34px, min(6.2vw, 10.5vh), 150px); }
+  .page-title { font-size: clamp(40px, min(8.2vw, 14vh), 180px); }
+  .mcat-n { font-size: clamp(34px, 5vw, 120px); -webkit-text-stroke-width: 3px; }
+  .mcat-head h2 { font-size: clamp(32px, 4.6vw, 118px); }
+  .shot-text { font-size: clamp(40px, 8vw, 210px); }
+  .asm-final-t { font-size: clamp(40px, 5.4vw, 130px); }
+  .asm-title { font-size: clamp(34px, 4vw, 100px); }
+  .hero-sub, .page-sub { font-size: 27px; }
+  .asm-desc { font-size: 42px; }
+  .asm-copy { width: min(860px, 46vw); gap: 34px; }
+  .asm-panel { width: min(640px, 40vw); }
+  .asm-final { width: min(780px, 46vw); }
+  .hero-badge { width: clamp(150px, 9vw, 260px); }
+  .sticker { width: clamp(170px, 11vw, 260px); }
+
+  .pgrid { grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 36px; }
+  .pcard-name { font-size: 36px; }
+  .pcard-price { font-size: 27px; }
+  .pcard-price small { font-size: 14px; }
+  .pcard-ing { font-size: 18px; }
+  .cat-nav { top: 100px; }
+  .cat-nav-inner a { font-size: 18px; min-height: 50px; padding-inline: 22px; }
+
+  .foot { padding-top: 110px; }
+  .foot-logo { width: 190px; }
+  .foot-col h3 { font-size: 25px; }
+  .foot-rights { font-size: 17px; }
+  .foot-chef { width: clamp(210px, 11vw, 300px); }
+}

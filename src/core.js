@@ -9,6 +9,7 @@ import '@fontsource/dm-sans/700.css';
 import '@fontsource/baloo-bhaijaan-2/arabic-500.css';
 import '@fontsource/baloo-bhaijaan-2/arabic-700.css';
 import './styles.css';
+import './xl.css';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

@@ -1,5 +1,5 @@
-import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, lp, onLang, applyLang, initCore, revealAll, renderBranchCards } from './core.js';
 import './pages.css';
+import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, lp, onLang, applyLang, initCore, revealAll, renderBranchCards } from './core.js';
 import { loadMenu, itemName } from './menu-store.js';
 import { initAssembly } from './burger.js';
 
