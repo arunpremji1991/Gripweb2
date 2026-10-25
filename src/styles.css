@@ -428,3 +428,20 @@ main { overflow-x: clip; }
 .foot-admin { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 16px; border: 2px solid rgba(255, 243, 234, 0.35); border-radius: 999px; font: 700 13px var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: var(--cream); opacity: 0.85; transition: background 0.25s, color 0.25s, border-color 0.25s; }
 .foot-admin:hover { background: var(--orange); border-color: var(--orange); opacity: 1; }
 [dir='rtl'] .foot-admin { text-transform: none; letter-spacing: 0; }
+
+/* floating "Menu" shortcut: phones and tablets only (desktop nav already shows Menu) */
+.fab-menu { display: none; }
+@media (max-width: 1024px) {
+  .fab-menu {
+    position: fixed; z-index: 40; inset-inline-end: 16px; bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    display: inline-flex; align-items: center; gap: 8px; min-height: 54px; padding: 0 20px 0 16px;
+    background: var(--orange); color: var(--cream); border: 3px solid var(--cream); border-radius: 999px;
+    font-family: var(--font-display); font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;
+    box-shadow: 0 8px 22px rgba(26, 11, 6, 0.35), 0 4px 0 rgba(26, 11, 6, 0.25);
+    opacity: 0; pointer-events: none; translate: 0 24px; transition: opacity 0.3s, translate 0.4s var(--ease);
+  }
+  body.fab-on .fab-menu { opacity: 1; pointer-events: auto; translate: 0 0; }
+  [dir='rtl'] .fab-menu { padding: 0 16px 0 20px; text-transform: none; font-weight: 700; letter-spacing: 0; }
+  .fab-menu:active { transform: translateY(2px); }
+}
+body.lock .fab-menu { display: none; }

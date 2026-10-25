@@ -87,7 +87,11 @@ function chromeHtml() {
           <a class="btn btn-cream js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
         </nav>
         <img class="drawer-chef" src="/brand/character-chef-flex.png" alt="" width="780" height="543" />
-      </div>`,
+      </div>
+      ${page === 'menu' ? '' : `<a class="fab-menu" href="${lp('/menu/')}" aria-label="${t('fab.menu')}">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a8 6 0 0 1 16 0z"/><path d="M3 14h18"/><path d="M5 14l1 1.5h12L19 14"/><path d="M5 18h14a1.5 1.5 0 0 1-1.5 2h-11A1.5 1.5 0 0 1 5 18z"/></svg>
+        <span>${t('nav.menu')}</span>
+      </a>`}`,
     footer: `
       <footer class="foot">
         <img class="foot-chef" src="/brand/character-chef-curled.png" alt="" width="732" height="559" loading="lazy" />
@@ -266,6 +270,10 @@ export function initCore(pageKey) {
     start: 40,
     onUpdate: (self) => $('#nav')?.classList.toggle('is-scrolled', self.scroll() > 40),
   });
+  // floating Menu shortcut (phones/tablets): appears once the visitor starts scrolling, so it never covers the hero buttons
+  const fab = () => document.body.classList.toggle('fab-on', window.scrollY > 120);
+  window.addEventListener('scroll', fab, { passive: true });
+  fab();
   onLang(renderMarquee);
   window.addEventListener('load', () => ScrollTrigger.refresh());
 }
