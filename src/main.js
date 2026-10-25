@@ -1,6 +1,6 @@
 import { $, $$, gsap, ScrollTrigger, reduce, getLang, t, lp, onLang, applyLang, initCore, revealAll, renderBranchCards } from './core.js';
 import './pages.css';
-import { MENU, BRANCHES, ORDER_URL, productImg } from './data.js';
+import { loadMenu, itemName } from './menu-store.js';
 import { initAssembly } from './burger.js';
 
 initCore('home');
@@ -10,21 +10,27 @@ const assembly = initAssembly({ getLang });
 
 /* ---------------- signature menu rail (full menu lives on /menu/) ---------------- */
 const SIGNATURE = ['Old School', 'Mushroom Swiss', 'Truffle', 'Grip', 'Brisket Burger'];
+let menuData = null;
+const esc = (x) => String(x ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function renderMenu() {
-  const all = MENU.flatMap((c) => c.items.map((i) => ({ ...i, cat: c.id })));
-  const items = SIGNATURE.map((n) => all.find((i) => i.name === n)).filter(Boolean);
+  if (!menuData) return;
+  const all = menuData.flatMap((c) => c.items.map((i) => ({ ...i, cat: c.id })));
+  // signature picks first; if the team hides one, fill from the beef burgers so the rail stays full
+  let items = SIGNATURE.map((n) => all.find((i) => i.name === n)).filter(Boolean);
+  for (const i of all.filter((x) => x.cat === 'beef')) if (items.length < 5 && !items.includes(i)) items.push(i);
   $('#menuRail').innerHTML = items.map((it) => `
     <li data-reveal>
-      <a class="pcard-btn" href="${lp('/menu/')}#cat-${it.cat === 'new' ? 'new' : 'beef'}">
+      <a class="pcard-btn" href="${lp('/menu/')}#cat-${it.cat === 'new' ? 'new' : it.cat}">
         ${it.cat === 'new' ? `<em class="pcard-new">${t('menu.new')}</em>` : ''}
-        <span class="pcard-img"><img src="${productImg(it.name)}" alt="${it.name}" width="400" height="400" loading="lazy" decoding="async" /></span>
-        <span class="pcard-name">${it.name}</span>
-        <span class="pcard-price"><small>OMR</small> ${it.price}</span>
-        ${it.ing ? `<span class="pcard-ing">${it.ing[lang]}</span>` : ''}
+        <span class="pcard-img"><img src="${esc(it.img)}" alt="${esc(itemName(it, lang))}" width="400" height="400" loading="lazy" decoding="async" /></span>
+        <span class="pcard-name">${esc(itemName(it, lang))}</span>
+        <span class="pcard-price"><small>OMR</small> ${esc(it.price)}</span>
+        ${it.ing?.[lang] ? `<span class="pcard-ing">${esc(it.ing[lang])}</span>` : ''}
       </a>
     </li>`).join('');
   revealAll();
 }
+loadMenu().then((d) => { menuData = d; renderMenu(); ScrollTrigger.refresh(); });
 
 /* ---------------- branches ---------------- */
 const renderBranches = () => renderBranchCards($('#branches'));

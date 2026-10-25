@@ -1,28 +1,28 @@
 import '../pages.css';
 import { $, $$, gsap, ScrollTrigger, reduce, t, getLang, onLang, applyLang, initCore, revealAll, renderMarquee, lenis } from '../core.js';
-import { MENU, productImg } from '../data.js';
+import { loadMenu, itemName } from '../menu-store.js';
 
 initCore('menu');
 
-/* Page sections: split Burgers into beef / chicken so the page reads as a real menu */
+/* Page sections (new / beef / chicken / sides / sweet / drinks), filled from the admin feed */
+const META = {
+  new: { key: 'page.menu.cat.new', isNew: true, chef: 'curled' },
+  beef: { key: 'page.menu.cat.beef', chef: 'flex' },
+  chicken: { key: 'page.menu.cat.chicken', chef: 'burger-box' },
+  sides: { key: 'page.menu.cat.sides', chef: 'curled' },
+  sweet: { key: 'page.menu.cat.sweet', chef: 'flex' },
+  drinks: { key: 'page.menu.cat.drinks', chef: 'burger-box' },
+};
+let data = null; // set once the menu has loaded
 function sections() {
-  const burgers = MENU.find((c) => c.id === 'burgers').items;
-  const beef = burgers.filter((i) => /Double beef patty/.test(i.ing.en));
-  const chicken = burgers.filter((i) => !/Double beef patty/.test(i.ing.en));
-  const by = (id) => MENU.find((c) => c.id === id).items;
-  return [
-    { id: 'new', key: 'page.menu.cat.new', items: by('new'), isNew: true, chef: 'curled' },
-    { id: 'beef', key: 'page.menu.cat.beef', items: beef, chef: 'flex' },
-    { id: 'chicken', key: 'page.menu.cat.chicken', items: chicken, chef: 'burger-box' },
-    { id: 'sides', key: 'page.menu.cat.sides', items: by('sides'), chef: 'curled' },
-    { id: 'sweet', key: 'page.menu.cat.sweet', items: by('sweet'), chef: 'flex' },
-    { id: 'drinks', key: 'page.menu.cat.drinks', items: by('drinks'), chef: 'burger-box' },
-  ];
+  return (data || []).filter((s) => s.items.length).map((s) => ({ ...s, ...META[s.id] }));
 }
 
+const esc = (x) => String(x ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const money = (p) => `<small>OMR</small> ${p}`;
 
 function render() {
+  if (!data) return;
   const lang = getLang();
   const secs = sections();
 
@@ -38,12 +38,12 @@ function render() {
       <ul class="pgrid">
         ${s.items.map((it) => `
           <li class="pcard" data-reveal>
-            <button type="button" class="pcard-btn" data-open="${s.id}|${it.name}" aria-haspopup="dialog">
+            <button type="button" class="pcard-btn" data-open="${s.id}|${it.id}" aria-haspopup="dialog">
               ${s.isNew ? `<em class="pcard-new">${t('menu.new')}</em>` : ''}
-              <span class="pcard-img"><img src="${productImg(it.name)}" alt="${it.name}" width="400" height="400" loading="lazy" decoding="async" /></span>
-              <span class="pcard-name">${it.name}</span>
+              <span class="pcard-img"><img src="${esc(it.img)}" alt="${esc(itemName(it, lang))}" width="400" height="400" loading="lazy" decoding="async" /></span>
+              <span class="pcard-name">${esc(itemName(it, lang))}</span>
               <span class="pcard-price">${money(it.price)}</span>
-              ${it.ing ? `<span class="pcard-ing">${it.ing[lang]}</span>` : ''}
+              ${it.ing?.[lang] ? `<span class="pcard-ing">${esc(it.ing[lang])}</span>` : ''}
             </button>
           </li>`).join('')}
       </ul>
@@ -70,17 +70,18 @@ function spy() {
 
 /* ---- details dialog ---- */
 const dlg = $('#itemDialog');
-function openItem(secId, name) {
+function openItem(secId, id) {
   const lang = getLang();
   const sec = sections().find((s) => s.id === secId);
-  const it = sec.items.find((i) => i.name === name);
-  $('#dlgImg').src = productImg(it.name);
-  $('#dlgImg').alt = it.name;
+  const it = sec.items.find((i) => i.id === id);
+  if (!it) return;
+  $('#dlgImg').src = it.img;
+  $('#dlgImg').alt = itemName(it, lang);
   $('#dlgCat').textContent = t(sec.key);
-  $('#dlgName').textContent = it.name;
+  $('#dlgName').textContent = itemName(it, lang);
   $('#dlgPrice').innerHTML = money(it.price);
-  const list = it.ing ? it.ing[lang].split(lang === 'ar' ? '، ' : ', ') : [];
-  $('#dlgIng').innerHTML = list.map((x) => `<li>${x}</li>`).join('');
+  const list = it.ing && it.ing[lang] ? it.ing[lang].split(/\s*[,،]\s*/).filter(Boolean) : [];
+  $('#dlgIng').innerHTML = list.map((x) => `<li>${esc(x)}</li>`).join('');
   $('#dlgIng').hidden = !list.length;
   $('#dlgIngH').hidden = !list.length;
   if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
@@ -113,4 +114,5 @@ if (!reduce) {
 
 onLang(() => { render(); spy(); renderMarquee(); });
 applyLang();
+loadMenu().then((d) => { data = d; render(); spy(); ScrollTrigger.refresh(); });
 if (location.hash) setTimeout(() => { const el = document.querySelector(location.hash); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 120, behavior: 'auto' }); }, 900);

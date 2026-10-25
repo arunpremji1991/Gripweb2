@@ -126,7 +126,7 @@ function seoPlugin() {
   </url>`;
         const urls = Object.keys(PAGES).flatMap((pg) => [entry(pg, 'en'), entry(pg, 'ar')]).join('');
         writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}\n</urlset>\n`);
-        writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+        writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /data/\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
       } else {
         writeFileSync(join(dist, 'robots.txt'), '# Temporary address: do not index. Rebuild with SITE_URL=https://your-domain for production.\nUser-agent: *\nDisallow: /\n');
       }

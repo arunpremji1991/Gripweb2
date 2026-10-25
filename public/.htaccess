@@ -1,5 +1,5 @@
 # GRIP Smashburger static site
-DirectoryIndex index.html
+DirectoryIndex index.html index.php
 
 # Always re-check HTML so visitors get new versions right after an update
 <IfModule mod_headers.c>
