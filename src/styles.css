@@ -125,7 +125,7 @@ ul, ol { list-style: none; }
 .shot-text { z-index: 2; }
 
 /* ============ MARQUEE ============ */
-.marquee { background: var(--ink); color: var(--cream); overflow: hidden; padding: 16px 0; border-block: 4px solid var(--cream); }
+.marquee { background: var(--ink); color: var(--cream); overflow: hidden; padding: 16px 0; border: 0; box-shadow: none; }
 .marquee-track { display: flex; width: max-content; align-items: center; gap: 28px; animation: marquee 38s linear infinite; font-family: var(--font-display); font-size: clamp(26px, 4vw, 48px); text-transform: uppercase; white-space: nowrap; }
 .marquee-track > span, .marquee-track > b { flex: none; }
 .marquee-track .o { color: var(--orange); }
