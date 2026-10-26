@@ -460,3 +460,4 @@ body.lock .fab-menu { display: none; }
   .order-inner > div:not(.order-visual) { order: 1; }
   .order-visual { order: 2; width: min(78%, 400px); margin-top: 8px; }
 }
+.fab-menu.fab-fly { transition: none; }

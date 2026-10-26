@@ -259,6 +259,31 @@ export function renderMarquee() {
   track.innerHTML = chunk + chunk;
 }
 
+/* Home, phones only: the hero's "Explore the menu" button glides into the floating Menu button */
+function flyMenuButton() {
+  if (page !== 'home' || reduce || !window.matchMedia('(max-width: 767px)').matches) return;
+  const fab = document.querySelector('.fab-menu');
+  const btn = document.querySelector('.hero-cta .btn');
+  if (!fab || !btn) return;
+  const from = btn.getBoundingClientRect();
+  if (from.width < 10 || from.bottom < 0 || from.top > window.innerHeight) return;
+  gsap.killTweensOf(fab);
+  fab.classList.add('fab-fly');
+  fab.style.translate = '0 0';
+  fab.style.opacity = '1';
+  gsap.set(fab, { clearProps: 'transform' });
+  const to = fab.getBoundingClientRect();
+  const dx = from.left + from.width / 2 - (to.left + to.width / 2);
+  const dy = from.top + from.height / 2 - (to.top + to.height / 2);
+  gsap.fromTo(fab,
+    { x: dx, y: dy, scaleX: from.width / to.width, scaleY: from.height / to.height },
+    {
+      x: 0, y: 0, scaleX: 1, scaleY: 1, duration: 0.75, ease: 'power3.inOut',
+      onComplete: () => { gsap.set(fab, { clearProps: 'transform,opacity' }); fab.classList.remove('fab-fly'); fab.style.translate = ''; fab.style.opacity = ''; },
+    });
+  gsap.fromTo(fab, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'none', overwrite: false, onComplete: () => { fab.style.opacity = ''; } });
+}
+
 /* ---------------- init ---------------- */
 export function initCore(pageKey) {
   page = pageKey;
@@ -273,7 +298,10 @@ export function initCore(pageKey) {
   const fab = () => {
     const foot = document.querySelector('.foot');
     const atFooter = foot ? foot.getBoundingClientRect().top < window.innerHeight - 40 : false;
-    document.body.classList.toggle('fab-on', window.scrollY > 120 && !atFooter);
+    const on = window.scrollY > 120 && !atFooter;
+    const was = document.body.classList.contains('fab-on');
+    if (on && !was) flyMenuButton();
+    document.body.classList.toggle('fab-on', on);
   };
   window.addEventListener('scroll', fab, { passive: true });
   window.addEventListener('resize', fab);
