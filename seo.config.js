@@ -12,6 +12,7 @@ import { BRANCHES } from './src/data.js';
 
 export const SITE_URL = (process.env.SITE_URL || '').replace(/\/$/, '');
 export const INSTAGRAM = 'https://www.instagram.com/grip.om/';
+export const TIKTOK = 'https://www.tiktok.com/@grip.om';
 export const ORDER = { en: '/menu/', ar: '/ar/menu/' };
 
 /** Source file (relative to project root) for every page path */
@@ -127,7 +128,7 @@ export function jsonLdFor(path, lang) {
     name: 'GRIP',
     url: abs('/'),
     logo: abs('/brand/badge-grip-round.png'),
-    sameAs: [INSTAGRAM],
+    sameAs: [INSTAGRAM, TIKTOK],
   };
   graph.push(org);
   if (path === '/' || path === '/smash-burger-salalah/') {
@@ -148,7 +149,7 @@ export function jsonLdFor(path, lang) {
       geo: { '@type': 'GeoCoordinates', latitude: br.geo.lat, longitude: br.geo.lng },
       hasMenu: abs('/menu/'),
       menu: abs('/menu/'),
-      sameAs: [INSTAGRAM, br.googleUrl],
+      sameAs: [INSTAGRAM, TIKTOK, br.googleUrl],
       image: abs('/img/storefront-night.jpg'),
     }));
   }

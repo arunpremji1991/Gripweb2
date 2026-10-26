@@ -17,6 +17,7 @@ export const ORDER_URL = {
 
 export const SOCIAL = {
   instagram: { url: 'https://www.instagram.com/grip.om/', handle: '@grip.om' },
+  tiktok: { url: 'https://www.tiktok.com/@grip.om', handle: '@grip.om' },
 };
 
 export const BRANCHES = [
@@ -344,6 +345,7 @@ export const I18N = {
     'foot.admin': 'Admin login',
     'fab.menu': 'View our menu',
     'a11y.instagram': 'GRIP on Instagram',
+    'a11y.tiktok': 'GRIP on TikTok',
     'a11y.menu': 'Menu',
     'a11y.lang': 'العربية',
     'a11y.home': 'GRIP — home',
@@ -491,6 +493,7 @@ export const I18N = {
     'foot.admin': 'دخول الإدارة',
     'fab.menu': 'عرض القائمة',
     'a11y.instagram': 'جريب على إنستغرام',
+    'a11y.tiktok': 'جريب على تيك توك',
     'a11y.menu': 'القائمة',
     'a11y.lang': 'English',
     'a11y.home': 'جريب — الرئيسية',
