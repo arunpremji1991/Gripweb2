@@ -259,29 +259,51 @@ export function renderMarquee() {
   track.innerHTML = chunk + chunk;
 }
 
-/* Home, phones only: the hero's "Explore the menu" button glides into the floating Menu button */
+/* Home, phones only: the hero's "Explore the menu" button travels to the corner and turns into the floating Menu button
+   (same pill, colours swap cream -> orange, label swaps to icon + "Menu"). */
+let flyer = null;
 function flyMenuButton() {
-  if (page !== 'home' || reduce || !window.matchMedia('(max-width: 767px)').matches) return;
+  if (page !== 'home' || reduce || flyer || !window.matchMedia('(max-width: 767px)').matches) return;
   const fab = document.querySelector('.fab-menu');
   const btn = document.querySelector('.hero-cta .btn');
   if (!fab || !btn) return;
   const from = btn.getBoundingClientRect();
-  if (from.width < 10 || from.bottom < 0 || from.top > window.innerHeight) return;
-  gsap.killTweensOf(fab);
+  const cta = btn.closest('.hero-cta');
+  if (from.width < 10 || from.bottom < 0 || from.top > window.innerHeight || parseFloat(getComputedStyle(cta).opacity) < 0.3) return;
+
+  // where the floating button will sit
   fab.classList.add('fab-fly');
+  fab.style.opacity = '0';
   fab.style.translate = '0 0';
-  fab.style.opacity = '1';
-  gsap.set(fab, { clearProps: 'transform' });
   const to = fab.getBoundingClientRect();
-  const dx = from.left + from.width / 2 - (to.left + to.width / 2);
-  const dy = from.top + from.height / 2 - (to.top + to.height / 2);
-  gsap.fromTo(fab,
-    { x: dx, y: dy, scaleX: from.width / to.width, scaleY: from.height / to.height },
-    {
-      x: 0, y: 0, scaleX: 1, scaleY: 1, duration: 0.75, ease: 'power3.inOut',
-      onComplete: () => { gsap.set(fab, { clearProps: 'transform,opacity' }); fab.classList.remove('fab-fly'); fab.style.translate = ''; fab.style.opacity = ''; },
-    });
-  gsap.fromTo(fab, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'none', overwrite: false, onComplete: () => { fab.style.opacity = ''; } });
+  fab.style.translate = '';
+
+  const cs = getComputedStyle(btn);
+  flyer = document.createElement('div');
+  flyer.className = 'fab-flyer';
+  flyer.setAttribute('aria-hidden', 'true');
+  flyer.innerHTML = `<span class="ff-a">${btn.textContent.trim()}</span><span class="ff-b">${fab.innerHTML}</span>`;
+  Object.assign(flyer.style, {
+    left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px`,
+    background: cs.backgroundColor, color: cs.color, borderColor: cs.borderTopColor,
+  });
+  document.body.appendChild(flyer);
+  btn.classList.add('fly-hide');
+
+  const done = () => {
+    fab.style.opacity = '1';
+    flyer?.remove();
+    flyer = null;
+    requestAnimationFrame(() => { fab.classList.remove('fab-fly'); fab.style.opacity = ''; });
+    if (!document.body.classList.contains('fab-on')) btn.classList.remove('fly-hide');
+  };
+  const orange = getComputedStyle(document.documentElement).getPropertyValue('--orange').trim();
+  const cream = getComputedStyle(document.documentElement).getPropertyValue('--cream').trim();
+  gsap.timeline({ onComplete: done })
+    .to(flyer, { left: to.left, top: to.top, width: to.width, height: to.height, duration: 0.85, ease: 'power3.inOut' }, 0)
+    .to(flyer, { backgroundColor: orange, color: cream, borderColor: cream, duration: 0.5, ease: 'power1.inOut' }, 0.15)
+    .to(flyer.querySelector('.ff-a'), { opacity: 0, duration: 0.22, ease: 'none' }, 0.12)
+    .to(flyer.querySelector('.ff-b'), { opacity: 1, duration: 0.28, ease: 'none' }, 0.42);
 }
 
 /* ---------------- init ---------------- */
@@ -302,6 +324,7 @@ export function initCore(pageKey) {
     const was = document.body.classList.contains('fab-on');
     if (on && !was) flyMenuButton();
     document.body.classList.toggle('fab-on', on);
+    if (!on && !flyer) document.querySelector('.hero-cta .btn')?.classList.remove('fly-hide');
   };
   window.addEventListener('scroll', fab, { passive: true });
   window.addEventListener('resize', fab);
