@@ -94,7 +94,6 @@ function chromeHtml() {
       </a>`}`,
     footer: `
       <footer class="foot">
-        <img class="foot-chef" src="/brand/character-chef-curled.png" alt="" width="732" height="559" loading="lazy" />
         <div class="wrap foot-inner">
           <div class="foot-brand">
             <span class="logo-mask foot-logo" role="img" aria-label="GRIP"></span>
@@ -135,10 +134,6 @@ function renderChrome() {
   if (h) h.innerHTML = header;
   if (f) f.innerHTML = footer;
   $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
-  if (f && !reduce) {
-    ScrollTrigger.getById('footchef')?.kill();
-    gsap.fromTo('.foot-chef', { yPercent: 55 }, { yPercent: 0, ease: 'none', scrollTrigger: { id: 'footchef', trigger: '.foot', start: 'top 100%', end: 'top 70%', scrub: true } });
-  }
 }
 
 export function applyLang() {

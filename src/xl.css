@@ -80,5 +80,4 @@
   .foot-logo { width: 190px; }
   .foot-col h3 { font-size: 25px; }
   .foot-rights { font-size: 17px; }
-  .foot-chef { width: clamp(210px, 11vw, 300px); }
 }
