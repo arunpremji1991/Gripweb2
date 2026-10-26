@@ -6,11 +6,11 @@ initCore('menu');
 
 /* Page sections (new / beef / chicken / sides / sweet / drinks), filled from the admin feed */
 const META = {
-  new: { key: 'page.menu.cat.new', isNew: true, chef: 'curled' },
+  new: { key: 'page.menu.cat.new', isNew: true },
   beef: { key: 'page.menu.cat.beef', chef: 'flex' },
-  chicken: { key: 'page.menu.cat.chicken', chef: 'burger-box' },
-  sides: { key: 'page.menu.cat.sides', chef: 'curled' },
-  sweet: { key: 'page.menu.cat.sweet', chef: 'flex' },
+  chicken: { key: 'page.menu.cat.chicken' },
+  sides: { key: 'page.menu.cat.sides' },
+  sweet: { key: 'page.menu.cat.sweet' },
   drinks: { key: 'page.menu.cat.drinks', chef: 'burger-box' },
 };
 let data = null; // set once the menu has loaded
@@ -33,7 +33,7 @@ function render() {
       <header class="mcat-head" data-reveal>
         <span class="mcat-n">${String(n + 1).padStart(2, '0')}</span>
         <h2 id="h-${s.id}">${t(s.key)}</h2>
-        <img class="mcat-chef wob" src="/brand/character-chef-${s.chef}.png" alt="" width="735" height="745" loading="lazy" />
+        ${s.chef ? `<img class="mcat-chef wob" src="/brand/character-chef-${s.chef}.png" alt="" width="735" height="745" loading="lazy" />` : ''}
       </header>
       <ul class="pgrid">
         ${s.items.map((it) => `
