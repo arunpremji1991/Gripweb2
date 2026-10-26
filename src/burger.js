@@ -90,13 +90,31 @@ export function initAssembly({ getLang }) {
     const mobile = isMobile();
     const span = STAGE_H + (LAYERS.length - 1) * gap() + 36;
     const widthCap = mobile ? (vw * 0.9) / 400 : (vw * 0.42) / 400;
-    const kAsm = Math.max(0.5, Math.min((vh - (mobile ? 300 : 170)) / STAGE_H, widthCap, vw >= 1900 ? 2.1 : 1.5));
+    let kAsm = Math.max(0.5, Math.min((vh - (mobile ? 300 : 170)) / STAGE_H, widthCap, vw >= 1900 ? 2.1 : 1.5));
+    let shift = mobile ? Math.round(Math.min(40, vh * 0.04)) : 0;
+    if (mobile) {
+      // short / narrow phones: keep the assembled burger between the headline and the button
+      const ct = section.querySelector('.copy-text');
+      const cta = section.querySelector('.hero-cta');
+      if (ct && cta) {
+        const top = ct.offsetTop + ct.offsetHeight + 10;
+        const bottom = vh - (parseFloat(getComputedStyle(cta).bottom) || 46) - cta.offsetHeight - 10;
+        const h = STAGE_H * kAsm;
+        const sTop = vh / 2 + shift - h / 2;
+        const sBottom = vh / 2 + shift + h / 2;
+        if (sTop < top || sBottom > bottom) {
+          kAsm = Math.max(0.35, Math.min(kAsm, (bottom - top) / STAGE_H));
+          shift = Math.round((top + bottom) / 2 - vh / 2);
+        }
+      }
+    }
     const kExp = Math.max(0.45, Math.min((vh - (mobile ? 260 : 120)) / span, widthCap));
     bumpExp = Math.min(1, kExp / kAsm);
     stage.style.setProperty('--k', kAsm.toFixed(3));
-    stage.style.setProperty('--shift', mobile ? `${Math.round(Math.min(40, vh * 0.04))}px` : '0px');
+    stage.style.setProperty('--shift', `${shift}px`);
   };
   fit();
+  document.fonts?.ready.then(fit); // headline height can change once the brand fonts arrive
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (reduce.matches) {

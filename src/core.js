@@ -279,6 +279,10 @@ function flyMenuButton() {
   fab.style.translate = '';
 
   const cs = getComputedStyle(btn);
+  const fcs = getComputedStyle(fab);
+  const startOpacity = parseFloat(getComputedStyle(cta).opacity) || 1;
+  const SH_START = '0 0 0 0 rgba(26, 11, 6, 0), 0 5px 0 0 rgba(26, 11, 6, 0.28)';
+  const SH_END = '0 8px 22px 0 rgba(26, 11, 6, 0.35), 0 4px 0 0 rgba(26, 11, 6, 0.25)';
   flyer = document.createElement('div');
   flyer.className = 'fab-flyer';
   flyer.setAttribute('aria-hidden', 'true');
@@ -286,7 +290,12 @@ function flyMenuButton() {
   Object.assign(flyer.style, {
     left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px`,
     background: cs.backgroundColor, color: cs.color, borderColor: cs.borderTopColor,
+    fontSize: cs.fontSize, letterSpacing: cs.letterSpacing, boxShadow: SH_START, opacity: String(startOpacity),
   });
+  // the Menu label keeps the floating button's own inner padding so the final hand-off is pixel-exact
+  const ffb = flyer.querySelector('.ff-b');
+  ffb.style.paddingInlineStart = fcs.paddingInlineStart;
+  ffb.style.paddingInlineEnd = fcs.paddingInlineEnd;
   document.body.appendChild(flyer);
   btn.classList.add('fly-hide');
 
@@ -299,11 +308,16 @@ function flyMenuButton() {
   };
   const orange = getComputedStyle(document.documentElement).getPropertyValue('--orange').trim();
   const cream = getComputedStyle(document.documentElement).getPropertyValue('--cream').trim();
-  gsap.timeline({ onComplete: done })
-    .to(flyer, { left: to.left, top: to.top, width: to.width, height: to.height, duration: 0.85, ease: 'power3.inOut' }, 0)
+  const dx = to.left - from.left;
+  const dy = to.top - from.top;
+  const tl = gsap.timeline({ onComplete: done });
+  tl.to(flyer, { x: dx, y: dy, width: to.width, height: to.height, duration: 0.85, ease: 'power3.inOut' }, 0)
+    .to(flyer, { fontSize: fcs.fontSize, letterSpacing: fcs.letterSpacing, boxShadow: SH_END, duration: 0.85, ease: 'power3.inOut' }, 0)
+    .to(flyer, { opacity: 1, duration: 0.2, ease: 'none' }, 0)
     .to(flyer, { backgroundColor: orange, color: cream, borderColor: cream, duration: 0.5, ease: 'power1.inOut' }, 0.15)
     .to(flyer.querySelector('.ff-a'), { opacity: 0, duration: 0.22, ease: 'none' }, 0.12)
-    .to(flyer.querySelector('.ff-b'), { opacity: 1, duration: 0.28, ease: 'none' }, 0.42);
+    .to(ffb, { opacity: 1, duration: 0.28, ease: 'none' }, 0.42);
+  if (import.meta.env.DEV) window.__flyTl = tl;
 }
 
 /* ---------------- init ---------------- */

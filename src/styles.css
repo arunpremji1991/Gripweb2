@@ -464,7 +464,12 @@ body.lock .fab-menu { display: none; }
 /* travelling copy of the hero button (home, phones) */
 .fly-hide { visibility: hidden !important; }
 .fab-menu.fab-fly { transition: none; }
-.fab-flyer { position: fixed; z-index: 41; display: grid; place-items: center; box-sizing: border-box; border: 3px solid var(--cream); border-radius: 999px; overflow: hidden; pointer-events: none; font-family: var(--font-display); font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 8px 22px rgba(26, 11, 6, 0.3); will-change: left, top, width, height; }
-.fab-flyer > span { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.fab-flyer { position: fixed; z-index: 41; display: block; box-sizing: border-box; border: 3px solid var(--cream); border-radius: 999px; overflow: hidden; pointer-events: none; font-family: var(--font-display); font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase; will-change: transform, width, height; }
+.fab-flyer > span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; }
 .fab-flyer .ff-b { opacity: 0; }
 [dir='rtl'] .fab-flyer { text-transform: none; font-weight: 700; letter-spacing: 0; }
+
+/* small phones: keep the hero kicker on one line so the headline does not crowd the burger */
+@media (max-width: 380px) {
+  .asm .kicker { font-size: 17px; }
+}
