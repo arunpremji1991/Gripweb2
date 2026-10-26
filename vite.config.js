@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve, dirname, join } from 'node:path';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { I18N } from './src/data.js';
-import { PAGES, FAQ, SITE_URL, ORDER, jsonLdFor, langPath } from './seo.config.js';
+import { PAGES, FAQ, SITE_URL, jsonLdFor, langPath } from './seo.config.js';
 
 const root = process.cwd();
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

@@ -8,7 +8,7 @@ import './xl.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { I18N, ORDER_URL, BRANCHES, SOCIAL } from './data.js';
+import { I18N, BRANCHES, SOCIAL } from './data.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +21,6 @@ export const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
 export const getLang = () => lang;
 export const t = (k) => I18N[lang][k] ?? I18N.en[k] ?? '';
-export const orderUrl = () => ORDER_URL[lang];
 /** prefix an internal path with the current language ('/menu/' -> '/ar/menu/') */
 export const lp = (path) => (lang === 'ar' ? '/ar' : '') + path;
 const otherLangUrl = () => {
@@ -70,7 +69,6 @@ function chromeHtml() {
         <nav class="nav-links" aria-label="Primary">${links('')}</nav>
         <div class="nav-actions">
           <a class="lang" id="langBtn" href="${otherLangUrl()}" hreflang="${lang === 'ar' ? 'en' : 'ar'}" lang="${lang === 'ar' ? 'en' : 'ar'}">${t('a11y.lang')}</a>
-          <a class="btn btn-sm js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
           <button class="burger" type="button" id="burgerBtn" aria-expanded="false" aria-controls="drawer" aria-label="${t('a11y.menu')}"><span></span><span></span></button>
         </div>
       </header>
@@ -78,7 +76,6 @@ function chromeHtml() {
         <nav aria-label="Mobile">
           <a href="${lp('/')}" data-nav="home">${t('nav.home')}</a>
           ${links('')}
-          <a class="btn btn-cream js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
         </nav>
         <img class="drawer-chef" src="/brand/character-chef-flex.png" alt="" width="780" height="543" />
       </div>
@@ -92,7 +89,6 @@ function chromeHtml() {
           <div class="foot-brand">
             <span class="logo-mask foot-logo" role="img" aria-label="GRIP"></span>
             <p>${t('foot.tag')}</p>
-            <a class="btn btn-sm js-order" target="_blank" rel="noopener">${t('cta.order')}</a>
             <div class="foot-social">
               <span>${t('foot.follow')}</span>
               <a class="social-link" href="${SOCIAL.instagram.url}" target="_blank" rel="noopener noreferrer" aria-label="${t('a11y.instagram')}">
@@ -131,7 +127,6 @@ function renderChrome() {
   const f = $('#site-footer');
   if (h) h.innerHTML = header;
   if (f) f.innerHTML = footer;
-  $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
 }
 
 /* escape text, then turn **phrase** into bold */
@@ -144,7 +139,6 @@ export function applyLang() {
   renderChrome();
   $$('[data-i18n]').forEach((el) => { const v = t(el.dataset.i18n); if (v) el.innerHTML = fmt(v); });
   $$('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
-  $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
   langListeners.forEach((fn) => fn(lang));
   ScrollTrigger.refresh();
 }
@@ -241,7 +235,6 @@ export function renderBranchCards(el) {
       <div class="branch-cta">
         <a class="btn btn-cream" href="${b.maps}" target="_blank" rel="noopener">${t('cta.directions')}</a>
         <a class="btn btn-ghost" href="tel:${b.tel}">${t('cta.call')}</a>
-        <a class="btn btn-ghost" href="${ORDER_URL[lang]}">${t('cta.orderOnline')}</a>
       </div>
     </article>`).join('');
   revealAll();

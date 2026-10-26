@@ -13,20 +13,19 @@ import { BRANCHES } from './src/data.js';
 export const SITE_URL = (process.env.SITE_URL || '').replace(/\/$/, '');
 export const INSTAGRAM = 'https://www.instagram.com/grip.om/';
 export const TIKTOK = 'https://www.tiktok.com/@grip.om';
-export const ORDER = { en: '/menu/', ar: '/ar/menu/' };
 
 /** Source file (relative to project root) for every page path */
 export const PAGES = {
   '/': {
     file: 'index.html',
     en: {
-      title: 'Smash Burger in Salalah | GRIP – Omani Smash Burger, Order Online',
-      desc: 'GRIP is an Omani smash burger brand born in Dhofar. Two Salalah branches, Wafa Walk and Salalah Gardens Mall, rated 4.5 and 4.9 on Google. Order online.',
+      title: 'Smash Burger in Salalah | GRIP – Omani Smash Burger, Menu & Branches',
+      desc: 'GRIP is an Omani smash burger brand born in Dhofar. Two Salalah branches, Wafa Walk and Salalah Gardens Mall, rated 4.5 and 4.9 on Google. See the full menu.',
       crumb: 'Home',
     },
     ar: {
-      title: 'سماش برجر في صلالة | جريب – علامة عُمانية، اطلب أونلاين',
-      desc: 'جريب علامة عُمانية لبرجر السماش وُلدت في ظفار. فرعان في صلالة: Wafa Walk وSalalah Gardens Mall بتقييم 4.5 و4.9 على Google. اطلب أونلاين.',
+      title: 'سماش برجر في صلالة | جريب – علامة عُمانية، القائمة والفروع',
+      desc: 'جريب علامة عُمانية لبرجر السماش وُلدت في ظفار. فرعان في صلالة: Wafa Walk وSalalah Gardens Mall بتقييم 4.5 و4.9 على Google. اطلع على القائمة الكاملة.',
       crumb: 'الرئيسية',
     },
   },
@@ -72,13 +71,13 @@ export const PAGES = {
   '/smash-burger-salalah/': {
     file: 'smash-burger-salalah/index.html',
     en: {
-      title: 'Best Smash Burger in Salalah? Try GRIP | 2 Branches, Order Online',
-      desc: 'Looking for the best smash burger in Salalah? GRIP serves beef smash burgers at Wafa Walk and Salalah Gardens Mall, rated 4.5 and 4.9 on Google. Order online.',
+      title: 'Best Smash Burger in Salalah? Try GRIP | 2 Branches, Full Menu',
+      desc: 'Looking for the best smash burger in Salalah? GRIP serves beef smash burgers at Wafa Walk and Salalah Gardens Mall, rated 4.5 and 4.9 on Google. See the full menu.',
       crumb: 'Smash burger in Salalah',
     },
     ar: {
-      title: 'أفضل سماش برجر في صلالة؟ جرّب جريب | فرعان، اطلب أونلاين',
-      desc: 'تبحث عن أفضل سماش برجر في صلالة؟ جريب تقدم برجر السماش في فرعي Wafa Walk وSalalah Gardens Mall بتقييم 4.5 و4.9 على Google. اطلب أونلاين.',
+      title: 'أفضل سماش برجر في صلالة؟ جرّب جريب | فرعان، القائمة الكاملة',
+      desc: 'تبحث عن أفضل سماش برجر في صلالة؟ جريب تقدم برجر السماش في فرعي Wafa Walk وSalalah Gardens Mall بتقييم 4.5 و4.9 على Google. اطلع على القائمة الكاملة.',
       crumb: 'سماش برجر في صلالة',
     },
   },
@@ -96,8 +95,8 @@ export const FAQ = {
       'Beef smash burgers (Old School, Mushroom Swiss, Truffle and GRIP) and crispy chicken burgers (Classic, Original, Buffalo and Hot Nashville), plus loaded fries, tenders, milkshakes, ice cream and drinks. The Brisket Burger is a new addition. The full menu with photos and prices is on our menu page.'],
     ['Where are the GRIP branches in Salalah?',
       `Wafa Walk: ${b[0].address}, phone ${b[0].phone}. Salalah Gardens Mall: ${b[1].address}, phone ${b[1].phone}.`],
-    ['Can I order GRIP online?',
-      'Yes. You can order through the official GRIP online ordering page, which is linked from every page of this website.'],
+    ['Does GRIP take online orders?',
+      'Not at the moment. You can see the full GRIP menu with prices on this website and visit either Salalah branch.'],
     ['Is GRIP an Omani brand?',
       'Yes. GRIP is a 100% Omani-owned and led brand, born in Dhofar.'],
   ],
@@ -110,8 +109,8 @@ export const FAQ = {
       'برجر سماش اللحم (أولد سكول، مشروم سويس، ترافل وجريب) وبرجر الدجاج المقرمش (كلاسيك، أوريجنال، بافلو وهوت ناشفيل)، إضافة إلى بطاطس محمّلة وتندرز وميلك شيك وآيس كريم ومشروبات. وبرجر بريسكت إضافة جديدة. القائمة الكاملة مع الصور والأسعار في صفحة القائمة.'],
     ['أين تقع فروع جريب في صلالة؟',
       `Wafa Walk: ${b[0].address}، هاتف ${b[0].phone}. Salalah Gardens Mall: ${b[1].address}، هاتف ${b[1].phone}.`],
-    ['هل يمكنني الطلب من جريب أونلاين؟',
-      'نعم. يمكنك الطلب عبر صفحة الطلب الرسمية لجريب، وهي موجودة في كل صفحات هذا الموقع.'],
+    ['هل تقبل جريب الطلبات أونلاين؟',
+      'حاليًا لا. يمكنك الاطلاع على قائمة جريب الكاملة بالأسعار في هذا الموقع وزيارة أي من الفرعين في صلالة.'],
     ['هل جريب علامة عُمانية؟',
       'نعم. جريب علامة عُمانية بملكية وإدارة عُمانية بالكامل، وُلدت في ظفار.'],
   ],

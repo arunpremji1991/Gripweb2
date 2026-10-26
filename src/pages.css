@@ -9,7 +9,7 @@
 .page-title .line { display: block; overflow: hidden; padding-bottom: 0.06em; }
 .page-title .line > span { display: block; }
 .page-title .line:last-child { color: var(--cream); }
-.page-menu .page-title .line:last-child, .page-menu .page-title .line:only-child { color: var(--cream); text-shadow: 0 4px 0 rgba(120, 30, 6, 0.5); }
+.page-menu .page-title .line:last-child, .page-menu .page-title .line:only-child { color: var(--cream); text-shadow: none; }
 .page-sub { max-width: 44ch; font-size: clamp(16px, 1.5vw, 20px); font-weight: 500; margin-bottom: 24px; }
 .page-hero-chef { width: min(100%, 460px); justify-self: center; filter: drop-shadow(0 24px 30px rgba(90, 20, 4, 0.35)); }
 

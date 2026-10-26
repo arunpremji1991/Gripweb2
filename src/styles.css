@@ -294,7 +294,6 @@ ul, ol { list-style: none; }
   .asm-copy { display: contents; }
   .copy-text { position: absolute; z-index: 4; top: 84px; inset-inline: var(--gutter); text-align: center; }
   .asm .hero-title { font-size: clamp(27px, 7.6vw, 56px); margin: 6px 0 8px; }
-  .asm .hero-title .line:last-child { text-shadow: 2px 2px 0 var(--cream); }
   .asm .hero-sub { display: none; }
   .asm .hero-cta { position: absolute; z-index: 5; bottom: 46px; inset-inline: var(--gutter); justify-content: center; }
   .asm .hero-cta .btn { padding: 12px 20px; min-height: 46px; font-size: 15px; }
