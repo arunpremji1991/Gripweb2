@@ -136,12 +136,15 @@ function renderChrome() {
   $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
 }
 
+/* escape text, then turn **phrase** into bold */
+const fmt = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+
 export function applyLang() {
   const root = document.documentElement;
   root.lang = lang;
   root.dir = lang === 'ar' ? 'rtl' : 'ltr';
   renderChrome();
-  $$('[data-i18n]').forEach((el) => { const v = t(el.dataset.i18n); if (v) el.textContent = v; });
+  $$('[data-i18n]').forEach((el) => { const v = t(el.dataset.i18n); if (v) el.innerHTML = fmt(v); });
   $$('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
   $$('.js-order').forEach((a) => { a.href = ORDER_URL[lang]; a.removeAttribute('target'); a.removeAttribute('rel'); });
   langListeners.forEach((fn) => fn(lang));

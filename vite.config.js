@@ -54,7 +54,7 @@ function localize(html, lang, path) {
     // static text for every data-i18n element (so crawlers see real content without running JS)
     .replace(/(<([a-zA-Z0-9]+)\b[^>]*?\sdata-i18n="([^"]+)"[^>]*>)([\s\S]*?)(<\/\2>)/g, (full, open, tag, key, inner, close) => {
       const v = dict[key] ?? I18N.en[key];
-      return v ? `${open}${esc(v)}${close}` : full;
+      return v ? `${open}${esc(v).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')}${close}` : full;
     })
     .replace(/<!--seo:start-->[\s\S]*?<!--seo:end-->/, headFor(path, lang))
     .replace(/<!--faq:start-->[\s\S]*?<!--faq:end-->/, faqHtml(lang));
