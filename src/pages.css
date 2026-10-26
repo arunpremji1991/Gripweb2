@@ -8,7 +8,7 @@
 [dir='rtl'] .page-title { text-transform: none; font-weight: 700; line-height: 1.12; }
 .page-title .line { display: block; overflow: hidden; padding-bottom: 0.06em; }
 .page-title .line > span { display: block; }
-.page-title .line:last-child { color: var(--ink); text-shadow: 3px 3px 0 var(--cream); }
+.page-title .line:last-child { color: var(--cream); }
 .page-menu .page-title .line:last-child, .page-menu .page-title .line:only-child { color: var(--cream); text-shadow: 0 4px 0 rgba(120, 30, 6, 0.5); }
 .page-sub { max-width: 44ch; font-size: clamp(16px, 1.5vw, 20px); font-weight: 500; margin-bottom: 24px; }
 .page-hero-chef { width: min(100%, 460px); justify-self: center; filter: drop-shadow(0 24px 30px rgba(90, 20, 4, 0.35)); }
@@ -45,7 +45,7 @@
 .pcard-new { position: absolute; z-index: 2; top: -10px; inset-inline-start: -8px; font: normal 700 12px var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 6px 12px; border-radius: 999px; rotate: -8deg; }
 
 /* product dialog */
-.pdialog { border: 0; padding: 0; background: transparent; max-width: min(960px, 94vw); width: 100%; color: var(--ink); overflow: visible; }
+.pdialog { border: 0; padding: 0; background: transparent; max-width: min(960px, 94vw); width: 100%; color: var(--orange); overflow: visible; }
 .pdialog::backdrop { background: rgba(26, 11, 6, 0.72); backdrop-filter: blur(6px); }
 .pdialog-panel { position: relative; display: grid; grid-template-columns: 1fr 1fr; background: var(--cream); border: 4px solid var(--orange); border-radius: 32px; box-shadow: 12px 12px 0 var(--orange); max-height: 90vh; overflow: auto; }
 .pdialog-img { background: #fff; display: grid; place-items: center; padding: clamp(16px, 3vw, 36px); border-radius: 28px 0 0 28px; }
