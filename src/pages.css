@@ -37,7 +37,7 @@
 .pcard-img { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 1; border-radius: 18px; overflow: hidden; background: var(--cream); }
 /* brand wave pattern behind each product */
 .pcard-img::before, .pdialog-img::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('/brand/pattern-waves-orange.png') center / 135% auto repeat; opacity: 0.07; pointer-events: none; }
-.pcard-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.6s var(--ease); }
+.pcard-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: darken; transition: transform 0.6s var(--ease); }
 .pcard-btn:hover .pcard-img img { transform: scale(1.07) rotate(1.5deg); }
 .pcard-name { font-family: var(--font-display); text-transform: uppercase; color: var(--orange); font-size: clamp(20px, 2vw, 28px); line-height: 1.02; margin-top: 8px; }
 [dir='rtl'] .pcard-name { text-transform: none; font-weight: 700; }
@@ -52,7 +52,7 @@
 .pdialog-panel { position: relative; display: grid; grid-template-columns: 1fr 1fr; background: var(--cream); border: 4px solid var(--orange); border-radius: 32px; box-shadow: 12px 12px 0 var(--orange); max-height: 90vh; overflow: auto; }
 .pdialog-img { position: relative; isolation: isolate; background: var(--cream); display: grid; place-items: center; padding: clamp(16px, 3vw, 36px); border-radius: 28px 0 0 28px; }
 [dir='rtl'] .pdialog-img { border-radius: 0 28px 28px 0; }
-.pdialog-img img { width: 100%; height: auto; max-height: 60vh; object-fit: contain; mix-blend-mode: multiply; }
+.pdialog-img img { width: 100%; height: auto; max-height: 60vh; object-fit: contain; mix-blend-mode: darken; }
 .pdialog-info { padding: clamp(22px, 4vw, 48px); display: grid; align-content: center; gap: 14px; }
 .pdialog-name { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; color: var(--orange); font-size: clamp(32px, 4.4vw, 58px); line-height: 1; }
 [dir='rtl'] .pdialog-name { text-transform: none; font-weight: 700; }
