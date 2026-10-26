@@ -181,13 +181,24 @@
     },
     {
      "id": "i17",
-     "name": "Kids Meal",
+     "name": "Kids Meal Nuggets",
      "name_ar": "",
      "price": "1.500",
      "ing_en": "Chicken nuggets, French fries, Juice",
      "ing_ar": "ناجتس دجاج، بطاطس مقلية، عصير",
-     "image": "/img/menu/kids-meal.jpg",
+     "image": "/img/menu/kids-meal-nuggets.jpg",
      "hidden": false
+    },
+    {
+     "id": "kids-burger",
+     "name": "Kids Meal Burger",
+     "name_ar": "",
+     "price": "1.900",
+     "ing_en": "Mini bun, Chicken patty, American slice cheese, Lettuce, Twister sauce, French fries, Juice",
+     "ing_ar": "خبز صغير، قطعة دجاج، شريحة جبنة أمريكية، خس، صلصة تويستر، بطاطس مقلية، عصير",
+     "image": "/img/menu/kids-meal-burger.jpg",
+     "hidden": false,
+     "since": 2
     }
    ]
   },
@@ -370,6 +381,17 @@
      "hidden": false
     }
    ]
+  }
+ ],
+ "seed_version": 2,
+ "patches": [
+  {
+   "since": 2,
+   "id": "i17",
+   "set": {
+    "name": "Kids Meal Nuggets",
+    "image": "/img/menu/kids-meal-nuggets.jpg"
+   }
   }
  ]
 }

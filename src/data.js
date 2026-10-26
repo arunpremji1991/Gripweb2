@@ -106,6 +106,9 @@ const G = {
   crisscut: ['Crisscut fries', 'بطاطس كريس كت'],
   nuggets: ['Chicken nuggets', 'ناجتس دجاج'],
   juice: ['Juice', 'عصير'],
+  miniBun: ['Mini bun', 'خبز صغير'],
+  chickenPatty: ['Chicken patty', 'قطعة دجاج'],
+  americanSlice: ['American slice cheese', 'شريحة جبنة أمريكية'],
 };
 
 const ing = (...keys) => ({
@@ -147,7 +150,8 @@ export const MENU = [
       { name: 'Loaded Nashville Fries', ing: ing('fries', 'nashChicken', 'cheddar', 'crispyOnion', 'pickle', 'comeback'), price: '2.700' },
       { name: 'Nashville Chicken Tenders', ing: ing('tenders2', 'waffle', 'crisscut', 'comeback'), price: '2.900' },
       { name: 'French Fries', ing: null, price: '0.700' },
-      { name: 'Kids Meal', ing: ing('nuggets', 'fries', 'juice'), price: '1.500' },
+      { name: 'Kids Meal Nuggets', ing: ing('nuggets', 'fries', 'juice'), price: '1.500' },
+      { name: 'Kids Meal Burger', ing: ing('miniBun', 'chickenPatty', 'americanSlice', 'lettuce', 'twister', 'fries', 'juice'), price: '1.900' },
     ],
   },
   {

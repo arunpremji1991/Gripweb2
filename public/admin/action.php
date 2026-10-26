@@ -99,6 +99,7 @@ switch ($action) {
             if ($at = find_item($m, $id)) {
                 $img = (string)($m['sections'][$at[0]]['items'][$at[1]]['image'] ?? '');
                 array_splice($m['sections'][$at[0]]['items'], $at[1], 1);
+                $m['removed'] = array_values(array_unique(array_merge($m['removed'] ?? [], [$id])));
                 save_menu($m);
                 if (strpos($img, '/uploads/menu/') === 0) { @unlink(root_dir() . $img); } // only our own uploads
             }
