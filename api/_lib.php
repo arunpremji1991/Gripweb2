@@ -42,7 +42,45 @@ function normalize_menu(array $m): array {
     }
     $out = [];
     foreach (MENU_SECTIONS as $id) { $out[] = ['id' => $id, 'items' => $by[$id] ?? []]; }
-    return ['version' => 1, 'updated' => (int)($m['updated'] ?? time()), 'sections' => $out];
+    $norm = ['version' => 1, 'updated' => (int)($m['updated'] ?? time()), 'sections' => $out];
+    if (isset($m['seed_version'])) { $norm['seed_version'] = (int)$m['seed_version']; }
+    if (!empty($m['removed']) && is_array($m['removed'])) { $norm['removed'] = array_values($m['removed']); }
+    return $norm;
+}
+
+/** Products added to the built-in menu after this site was first set up appear automatically (once). */
+function apply_seed_upgrades(array $m): array {
+    $f = __DIR__ . '/menu.seed.json';
+    $seed = is_file($f) ? json_decode((string)file_get_contents($f), true) : null;
+    if (!is_array($seed)) { return $m; }
+    $want = (int)($seed['seed_version'] ?? 1);
+    $have = (int)($m['seed_version'] ?? 1);
+    if ($have >= $want) { return $m; }
+    $removed = $m['removed'] ?? [];
+    $ids = [];
+    foreach ($m['sections'] as $s) { foreach ($s['items'] as $it) { $ids[(string)($it['id'] ?? '')] = true; } }
+    foreach (($seed['patches'] ?? []) as $p) {
+        if ((int)($p['since'] ?? 0) <= $have || in_array($p['id'] ?? '', $removed, true)) { continue; }
+        foreach ($m['sections'] as &$s) {
+            foreach ($s['items'] as &$it) {
+                if (($it['id'] ?? '') === ($p['id'] ?? null)) { $it = array_merge($it, is_array($p['set'] ?? null) ? $p['set'] : []); }
+            }
+            unset($it);
+        }
+        unset($s);
+    }
+    foreach (($seed['sections'] ?? []) as $ss) {
+        foreach (($ss['items'] ?? []) as $it) {
+            $id = (string)($it['id'] ?? '');
+            if ((int)($it['since'] ?? 1) <= $have || isset($ids[$id]) || in_array($id, $removed, true)) { continue; }
+            unset($it['since']);
+            foreach ($m['sections'] as &$s) { if ($s['id'] === ($ss['id'] ?? '')) { $s['items'][] = $it; } }
+            unset($s);
+        }
+    }
+    $m['seed_version'] = $want;
+    save_menu($m);
+    return $m;
 }
 
 function load_menu(): array {
@@ -50,12 +88,14 @@ function load_menu(): array {
     if (!is_file($f)) {
         $seed = __DIR__ . '/menu.seed.json';
         $m = is_file($seed) ? json_decode((string)file_get_contents($seed), true) : null;
+        $seed_ver = is_array($m) ? (int)($m['seed_version'] ?? 1) : 1;
         $m = normalize_menu(is_array($m) ? $m : []);
+        $m['seed_version'] = (int)($seed_ver ?? 1);
         save_menu($m);
         return $m;
     }
     $m = json_decode((string)file_get_contents($f), true);
-    return normalize_menu(is_array($m) ? $m : []);
+    return apply_seed_upgrades(normalize_menu(is_array($m) ? $m : []));
 }
 
 function save_menu(array $m): void {
