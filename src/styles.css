@@ -125,7 +125,7 @@ ul, ol { list-style: none; }
 .shot-text { z-index: 2; }
 
 /* ============ MARQUEE ============ */
-.marquee { background: var(--ink); color: var(--cream); overflow: hidden; padding: 16px 0; border: 0; box-shadow: none; }
+.marquee { background: var(--ink); color: var(--cream); overflow: hidden; padding: 22px 0; border: 0; box-shadow: none; }
 .marquee-track { display: flex; width: max-content; align-items: center; gap: 28px; animation: marquee 38s linear infinite; font-family: var(--font-display); font-size: clamp(26px, 4vw, 48px); text-transform: uppercase; white-space: nowrap; }
 .marquee-track > span, .marquee-track > b { flex: none; }
 .marquee-track .o { color: var(--orange); }
@@ -324,6 +324,8 @@ ul, ol { list-style: none; }
 /* ============ CHARACTERS (brand mascot placements) ============ */
 @keyframes wob { 0%, 100% { rotate: -3deg; } 50% { rotate: 3deg; } }
 .wob { animation: wob 4.5s ease-in-out infinite; transform-origin: 50% 80%; }
+.mq-word { flex: none; height: 2.1em; width: auto; margin-block: -0.1em -0.4em; }
+.mq-logo { flex: none; height: 1.85em; width: auto; margin-inline: 4px; }
 .mq-chef { flex: none; height: 1.25em; width: auto; margin-inline: 4px; filter: brightness(1.05); }
 .story-chef { position: absolute; z-index: 3; inset-inline-end: -4%; top: -9%; width: clamp(96px, 15vw, 190px); filter: drop-shadow(0 10px 14px rgba(26, 11, 6, 0.28)); pointer-events: none; }
 .shot-chef { position: absolute; z-index: 3; inset-inline-end: 3%; bottom: -2%; width: clamp(150px, 26vw, 400px); filter: drop-shadow(0 14px 22px rgba(60, 14, 2, 0.45)); pointer-events: none; }

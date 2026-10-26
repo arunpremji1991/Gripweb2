@@ -250,9 +250,11 @@ export function renderBranchCards(el) {
 export function renderMarquee() {
   const track = $('.marquee-track');
   if (!track) return;
-  const word = t('marquee');
+  // brand artwork, never retyped: official 'smashburger' script + GRIP wordmark sticker
+  const word = '<img class="mq-word" src="/brand/script-smashburger-arc.webp" alt="" width="2000" height="769" />';
+  const logo = '<img class="mq-logo" src="/brand/logo-grip-sticker-outline.png" alt="" width="874" height="563" />';
   const chef = (n) => `<img class="mq-chef" src="/brand/character-chef-${n}.png" alt="" width="780" height="543" />`;
-  const chunk = Array.from({ length: 6 }, () => `<span>${word}</span>${chef('curled')}<span class="o">GRIP</span>${chef('flex')}`).join('');
+  const chunk = Array.from({ length: 6 }, () => `${word}${chef('curled')}${logo}${chef('flex')}`).join('');
   track.innerHTML = chunk + chunk;
 }
 
