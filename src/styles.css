@@ -1,3 +1,9 @@
+/* Brand fonts: Janna LT (headings Bold, body Regular/Bold; Latin + Arabic) and Confiteria Script Bold (English cursive) */
+@font-face { font-family: 'Janna Display'; src: url('./fonts/janna-lt-bold.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Janna Body'; src: url('./fonts/janna-lt-regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Janna Body'; src: url('./fonts/janna-lt-bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Confiteria Script'; src: url('./fonts/confiteria-script-bold.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+
 /* ============ TOKENS (brand book: Orange #F04E24 / Cream #FFF3EA) ============ */
 :root {
   --orange: #f04e24;
@@ -5,17 +11,14 @@
   --cream: #fff3ea;
   --ink: #1a0b06;
   --ink-2: #2a130b;
-  --font-display: 'Lilita One', 'Baloo Bhaijaan 2', system-ui, sans-serif;
-  --font-script: 'Pacifico', 'Baloo Bhaijaan 2', cursive;
-  --font-body: 'DM Sans', 'Baloo Bhaijaan 2', system-ui, sans-serif;
+  --font-display: 'Janna Display', system-ui, sans-serif;
+  --font-script: 'Confiteria Script', 'Janna Display', cursive;
+  --font-body: 'Janna Body', system-ui, sans-serif;
   --gutter: clamp(20px, 5vw, 72px);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-[dir='rtl'] {
-  --font-display: 'Baloo Bhaijaan 2', 'Lilita One', system-ui, sans-serif;
-  --font-script: 'Baloo Bhaijaan 2', 'Pacifico', cursive;
-  --font-body: 'Baloo Bhaijaan 2', 'DM Sans', system-ui, sans-serif;
-}
+/* Arabic: Confiteria Script is Latin-only, so Arabic cursive accents use Janna LT Bold */
+[dir='rtl'] { --font-script: 'Janna Display', system-ui, sans-serif; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }

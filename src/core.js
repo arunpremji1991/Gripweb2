@@ -2,12 +2,6 @@
  * Shared by every page: fonts, global styles, language (EN/AR + RTL), header,
  * mobile drawer, footer, smooth scrolling and the page-transition wipe.
  */
-import '@fontsource/lilita-one/400.css';
-import '@fontsource/pacifico/400.css';
-import '@fontsource/dm-sans/400.css';
-import '@fontsource/dm-sans/700.css';
-import '@fontsource/baloo-bhaijaan-2/arabic-500.css';
-import '@fontsource/baloo-bhaijaan-2/arabic-700.css';
 import './styles.css';
 import './xl.css';
 
