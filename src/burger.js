@@ -149,13 +149,13 @@ export function initAssembly({ getLang }) {
     setStep(t >= 1 && t < 8 ? Math.min(STEPS.length - 1, Math.floor(t - 1)) : -1);
   });
 
-  const scrollLen = () => window.innerHeight * (isMobile() ? 5.5 : 8);
+  const scrollLen = () => window.innerHeight * (isMobile() ? 2.3 : 4.8); // same animation, shorter scroll
   const st = ScrollTrigger.create({
     trigger: section,
     start: 'top top',
     end: () => `+=${scrollLen()}`,
     pin: true,
-    scrub: 0.7,
+    scrub: 0.5,
     animation: tl,
     anticipatePin: 1,
     invalidateOnRefresh: true,
