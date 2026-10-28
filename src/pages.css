@@ -61,12 +61,16 @@
 .pdialog-h { font: 700 13px var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-top: 6px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips li { font-weight: 700; font-size: 14px; color: var(--orange); border: 2px solid var(--orange); border-radius: 999px; padding: 6px 14px; background: rgba(240, 78, 36, 0.06); }
+.chips li a { display: inline-flex; align-items: center; gap: 7px; color: inherit; text-decoration: none; }
+.chips li:has(a) { padding: 0; transition: background 0.25s, color 0.25s; }
+.chips li a { padding: 6px 14px; border-radius: 999px; min-height: 36px; }
+.chips li:has(a):hover { background: var(--orange); color: var(--cream); }
 .pdialog-info .btn { justify-self: start; margin-top: 10px; }
 .pdialog-close { position: absolute; z-index: 3; top: 12px; inset-inline-end: 14px; width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--orange); background: var(--cream); color: var(--orange); font-size: 30px; line-height: 1; cursor: pointer; display: grid; place-items: center; padding-bottom: 4px; }
 .pdialog-close:hover { background: var(--orange); color: var(--cream); }
 
 /* ============ LEADERSHIP PAGE ============ */
-.lead-hero { padding: clamp(116px, 18vh, 170px) 0 0; }
+.lead-hero { padding: clamp(116px, 18vh, 170px) 0 clamp(150px, 16vw, 230px); }
 .lead-title { text-align: center; }
 .lead-title .page-title { margin-inline: auto; }
 .lead-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: end; margin-top: clamp(16px, 3vw, 40px); padding-top: clamp(70px, 8vw, 110px); }
@@ -255,10 +259,6 @@
 @media (max-width: 960px) { .menu-rail.four { grid-template-columns: none; } }
 @media (max-width: 760px) { .faq-sec { padding-block: 92px; } .what { padding-block: 92px; } }
 
-/* leadership names (no portraits) */
-.lead-names { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px clamp(10px, 2vw, 22px); margin-top: clamp(28px, 5vw, 48px); padding-bottom: clamp(70px, 9vw, 120px); }
-.lead-tag { font-family: var(--font-display); font-size: clamp(14px, 1.5vw, 22px); text-transform: uppercase; line-height: 1.1; padding: 10px 18px; background: var(--cream); color: var(--orange); border-radius: 999px; }
-[dir='rtl'] .lead-tag { text-transform: none; font-weight: 700; }
 
 /* Our Story page: flat look, no shadows on photos, characters, cards */
 body.page-story .page-hero-chef,

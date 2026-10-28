@@ -1,15 +1,7 @@
 import '../pages.css';
 import { $, $$, gsap, ScrollTrigger, reduce, getLang, onLang, applyLang, initCore, revealAll } from '../core.js';
-import { LEADERS } from '../data.js';
 
 initCore('leadership');
-
-function renderLeaders() {
-  const lang = getLang();
-  $('#leadRow').innerHTML = LEADERS.map((p) => `<li class="lead-tag">${p.name[lang]}</li>`).join('');
-  if (!reduce) gsap.from('.lead-tag', { y: 18, autoAlpha: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.4 });
-  revealAll();
-}
 
 if (!reduce) {
   gsap.from('.page-title .line > span', { yPercent: 115, duration: 0.9, stagger: 0.12, ease: 'power4.out', delay: 0.2 });
@@ -25,8 +17,5 @@ if (!reduce) {
   });
 }
 
-onLang(() => {
-  renderLeaders();
-});
 applyLang();
 
