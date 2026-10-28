@@ -300,7 +300,7 @@ ul, ol { list-style: none; }
   .asm-stage, [dir='rtl'] .asm-stage { --sx: 0px; }
   .asm-panel { inset-inline: var(--gutter); top: auto; bottom: 52px; translate: none; width: auto; text-align: center; transform: translateY(18px); }
   .asm-panel.is-on { transform: none; }
-  .asm-title { font-size: clamp(32px, 9vw, 52px); }
+  .asm-title { font-size: clamp(26px, 7vw, 46px); }
   .asm-final { inset-inline: var(--gutter); top: auto; bottom: 44px; translate: none; width: auto; justify-items: center; text-align: center; }
   .asm-final-t { font-size: clamp(34px, 10vw, 64px); }
       .hero-badge { z-index: 1; width: 58px; inset-inline-end: 14px; top: 176px; bottom: auto; }

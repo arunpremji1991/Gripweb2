@@ -123,7 +123,7 @@ export function initAssembly({ getLang }) {
     return { relang: renderList };
   }
 
-  /* ----- timeline: 0-1 explode | 1-8 steps | 8-9.4 reassemble | 9.4-10.4 final ----- */
+  /* ----- timeline: 0-1 explode | 1-5 steps (4 groups) | 5-6.4 reassemble | 6.4-7.4 final ----- */
   const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
   els.forEach((el, i) => {
     const dir = i % 2 ? 1 : -1;
@@ -132,24 +132,24 @@ export function initAssembly({ getLang }) {
   tl.to(stage, { '--bump': () => bumpExp, duration: 1 }, 0);
   tl.to(fadeOut, { autoAlpha: 0, y: -24, duration: 0.7, stagger: 0.05 }, 0.05);
   tl.to(cue, { autoAlpha: 0, duration: 0.4 }, 0.05);
-  tl.to({}, { duration: 7 }, 1);
+  tl.to({}, { duration: 4 }, 1);
   // gentle sway so the scene stays alive while the steps play
-  tl.to(els, { rotation: (i) => (i % 2 ? -2.4 : 2.4), duration: 3.5, ease: 'sine.inOut', stagger: 0.05 }, 1.2);
-  tl.to(els, { rotation: (i) => (i % 2 ? 2.4 : -2.4), duration: 3.5, ease: 'sine.inOut', stagger: 0.05 }, 4.7);
-  tl.to(els, { y: 0, x: 0, rotation: 0, duration: 1.4, ease: 'power3.inOut' }, 8);
-  tl.to(stage, { '--bump': 1, duration: 1.4, ease: 'power3.inOut' }, 8);
-  tl.fromTo(final, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 9.3);
-  tl.to(stage, { '--bump': 1.05, duration: 1, ease: 'power2.out' }, 9.3);
-  tl.to(badge, { rotation: 360, duration: 10.4, ease: 'none' }, 0);
-  tl.to(giant, { yPercent: -12, duration: 10.4, ease: 'none' }, 0);
-  tl.to({}, { duration: 0.4 }, 10.1);
+  tl.to(els, { rotation: (i) => (i % 2 ? -2.4 : 2.4), duration: 2, ease: 'sine.inOut', stagger: 0.05 }, 1.2);
+  tl.to(els, { rotation: (i) => (i % 2 ? 2.4 : -2.4), duration: 2, ease: 'sine.inOut', stagger: 0.05 }, 3.2);
+  tl.to(els, { y: 0, x: 0, rotation: 0, duration: 1.4, ease: 'power3.inOut' }, 5);
+  tl.to(stage, { '--bump': 1, duration: 1.4, ease: 'power3.inOut' }, 5);
+  tl.fromTo(final, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 6.3);
+  tl.to(stage, { '--bump': 1.05, duration: 1, ease: 'power2.out' }, 6.3);
+  tl.to(badge, { rotation: 360, duration: 7.4, ease: 'none' }, 0);
+  tl.to(giant, { yPercent: -12, duration: 7.4, ease: 'none' }, 0);
+  tl.to({}, { duration: 0.4 }, 7.1);
 
   tl.eventCallback('onUpdate', () => {
     const t = tl.time();
-    setStep(t >= 1 && t < 8 ? Math.min(STEPS.length - 1, Math.floor(t - 1)) : -1);
+    setStep(t >= 1 && t < 5 ? Math.min(STEPS.length - 1, Math.floor(t - 1)) : -1);
   });
 
-  const scrollLen = () => window.innerHeight * (isMobile() ? 2.3 : 4.8); // same animation, shorter scroll
+  const scrollLen = () => window.innerHeight * (isMobile() ? 2.2 : 4.0); // same animation, shorter scroll
   const st = ScrollTrigger.create({
     trigger: section,
     start: 'top top',

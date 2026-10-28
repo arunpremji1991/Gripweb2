@@ -190,13 +190,10 @@ export const LEADERS = [
 
 /* ---------- Assembly steps (match the official "Old School" burger) ---------- */
 export const STEPS = [
-  { layers: ['bunTop'], t: { en: 'Brioche bun', ar: 'خبز البريوش' }, d: { en: 'The soft, golden crown.', ar: 'التاج الذهبي الطري.' } },
+  { layers: ['bunTop', 'bunBottom'], t: { en: 'Top & bottom bun', ar: 'الخبز العلوي والسفلي' }, d: { en: 'Soft, golden brioche, top and bottom.', ar: 'بريوش ذهبي طري من الأعلى والأسفل.' } },
   { layers: ['sauce'], t: { en: 'Ketchup & mustard', ar: 'كاتشب وخردل' }, d: { en: 'The classic stripe.', ar: 'اللمسة الكلاسيكية.' } },
-  { layers: ['pickle'], t: { en: 'Pickle', ar: 'مخلل' }, d: { en: 'A sharp, tangy crunch.', ar: 'قرمشة حادة ومنعشة.' } },
-  { layers: ['onion'], t: { en: 'Onion', ar: 'بصل' }, d: { en: 'Fresh bite, every layer.', ar: 'نكهة طازجة في كل طبقة.' } },
-  { layers: ['cheese'], t: { en: 'American cheese', ar: 'جبنة أمريكية' }, d: { en: 'Melted. Irresistible.', ar: 'ذائبة. لا تقاوم.' } },
+  { layers: ['pickle', 'onion', 'cheese'], t: { en: 'Pickle, onion & cheese', ar: 'مخلل وبصل وجبنة' }, d: { en: 'Crunch, bite and melted American cheese.', ar: 'قرمشة ونكهة وجبنة أمريكية ذائبة.' } },
   { layers: ['pattyA', 'pattyB'], t: { en: 'Double beef patty', ar: 'قطعتا لحم بقري' }, d: { en: 'Smashed for crisp, caramelised edges.', ar: 'مسحوقة لحواف مقرمشة ومكرمَلة.' } },
-  { layers: ['bunBottom'], t: { en: 'The base', ar: 'القاعدة' }, d: { en: 'Where every smash lands.', ar: 'حيث يستقر كل سماش.' } },
 ];
 
 /* ---------- UI copy ---------- */
