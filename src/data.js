@@ -34,7 +34,7 @@ export const BRANCHES = [
     name: 'Grip – Salalah Gardens Mall',
     phone: '+968 7222 3377',
     tel: '+96872223377',
-    maps: 'https://www.google.com/maps/search/?api=1&query=Grip+-+Salalah+Gardens+Mall',
+    maps: 'https://www.google.com/maps/place/Grip+-+Salalah+Gardens+Mall/@17.0225497,54.0668007,17z/data=!3m1!4b1!4m6!3m5!1s0x3dd16100248390f3:0xc386c536940737d1!8m2!3d17.0225497!4d54.0668007!16s%2Fg%2F11zwzgfzxh',
     address: 'Ground Floor, Salalah Gardens Mall, Ar Rubat St, Salalah',
     street: 'Ground Floor, Salalah Gardens Mall, Ar Rubat St',
     geo: { lat: 17.0225497, lng: 54.0668007 },
