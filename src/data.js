@@ -27,7 +27,7 @@ export const BRANCHES = [
     geo: { lat: 17.0305978, lng: 54.1736651 },
     // Google rating snapshot (Google Maps listing, Oct 2026) — update when it changes
     rating: { score: '4.5', count: 388 },
-    googleUrl: 'https://www.google.com/maps/place/Grip+-+Wafa+Walk,+Salalah/data=!4m7!3m6!1s0x3dd3dd004554f2cd:0x969319f87a9ae6e!8m2!3d17.0305978!4d54.1736651!16s%2Fg%2F11ycwkln3q',
+    googleUrl: 'https://www.google.com/search?sca_esv=c4a0a25368e77353&sxsrf=AKL5yDiKjYigDBTNb4QBbP6YNHEUGDeQyw:1793541378368&q=Grip+-+Wafa+Walk,+Salalah&si=AE1YtOqiKPb2pdLXAi8quZ9vbH4aVq_aX8-3H9iFBLpRNK95cyP71qTnT7AWaBkMQckKGVCIskZH4J_b3UQF_sKBy6R3JvcczelsM8nGvv9VOCG9hUiMHoK5XhNas2PN3GnJ04nnrKpzH8c1WNsr-f2ohERvJYPZQw%3D%3D&uds=AE2AFgYS-PrrP9togVIC8vPs1lwpaA6hW4ZbbE46T7DTw3MCVuMrA3cih-tlYrYAj9XSmcrf_IuJ0_AsNuq26V6RiLfU-T6QJ2Hhy_HZNPKHiduI2RtD--k2zRF9RDAsD9HTG79Z_2ZT&sa=X&ved=2ahUKEwjm_Pyl9uaXAxWyluEIHU9wIcMQrrQLegQIMRAA&biw=1414&bih=876&dpr=2',
   },
   {
     id: 'gardens-mall',
@@ -39,7 +39,7 @@ export const BRANCHES = [
     street: 'Ground Floor, Salalah Gardens Mall, Ar Rubat St',
     geo: { lat: 17.0225497, lng: 54.0668007 },
     rating: { score: '4.9', count: 106 },
-    googleUrl: 'https://www.google.com/maps/place/Grip+-+Salalah+Gardens+Mall/@17.0225497,54.0668007,17z/data=!3m1!4b1!4m6!3m5!1s0x3dd16100248390f3:0xc386c536940737d1!8m2!3d17.0225497!4d54.0668007!16s%2Fg%2F11zwzgfzxh',
+    googleUrl: 'https://www.google.com/maps/place/Grip+-+Salalah+Gardens+Mall/@17.0225497,54.0668007,17z/data=!4m8!3m7!1s0x3dd16100248390f3:0xc386c536940737d1!8m2!3d17.0225497!4d54.0668007!9m1!1b1!16s%2Fg%2F11zwzgfzxh?entry=ttu&g_ep=EgoyMDI2MTAyOC4wIKXMDSoASAFQAw%3D%3D',
   },
 ];
 
