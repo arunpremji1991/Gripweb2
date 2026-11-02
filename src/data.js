@@ -21,7 +21,7 @@ export const BRANCHES = [
     name: 'Grip – Wafa Walk',
     phone: '+968 7112 2000',
     tel: '+96871122000',
-    maps: 'https://share.google/BtRI6yYKGMRWSUNX3',
+    maps: 'https://www.google.com/maps/place/Grip+-+Wafa+Walk,+Salalah/@17.0305978,54.1736651,17z/data=!4m6!3m5!1s0x3dd3dd004554f2cd:0x969319f87a9ae6e!8m2!3d17.0305978!4d54.1736651!16s%2Fg%2F11ycwkln3q',
     address: '25JF+364, Al Sultan Taymoor St, Salalah',
     street: 'Al Sultan Taymoor St',
     geo: { lat: 17.0305978, lng: 54.1736651 },
